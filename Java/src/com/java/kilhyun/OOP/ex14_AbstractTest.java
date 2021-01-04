@@ -8,7 +8,9 @@ public class ex14_AbstractTest {
 
         phone.turnOn();
         phone.internetSearch();
+        phone.sound();
         phone.turnOff();
+
     }
 
 }
