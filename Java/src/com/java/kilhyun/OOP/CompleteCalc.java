@@ -31,4 +31,10 @@ public class CompleteCalc extends Calculator {
         System.out.println("모두 구현하였습니다.");
     }
 
+    // ex18-3 에서 사용
+    @Override
+    public void description()
+    {
+        System.out.println("재정의 한 description");
+    }
 }
