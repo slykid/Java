@@ -20,13 +20,13 @@ public class Outter {
 
         void print()
         {
-            System.out.println(this.field);
-            this.method();
+            System.out.println(this.field);  // Nested 클래스 자신의 필드
+            this.method();                   // Nested 클래스 자신의 메소드
 
             System.out.println();
 
-            System.out.println(Outter.this.field);
-            Outter.this.method();
+            System.out.println(Outter.this.field);  // Outter 클래스의 필드
+            Outter.this.method();                   // Outter 클래스의 메소드
         }
     }
 }
