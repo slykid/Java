@@ -2,6 +2,7 @@ package com.java.kilhyun.OOP;
 
 public class TV {
 
+    // 필드 선언 & 초기값 대입
     RemoteControl field = new RemoteControl() {
         @Override
         public void turnOn()
@@ -17,6 +18,8 @@ public class TV {
     };
 
     void method1() {
+
+        // 로컬 변수 선언 & 초기값 대입
         RemoteControl localVar = new RemoteControl() {
             @Override
             public void turnOn()
@@ -31,6 +34,7 @@ public class TV {
             }
         };
 
+        // 로컬 변수 사용
         localVar.turnOn();
     }
 
