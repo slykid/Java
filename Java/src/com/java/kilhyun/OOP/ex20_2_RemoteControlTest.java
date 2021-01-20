@@ -1,6 +1,6 @@
 package com.java.kilhyun.OOP;
 
-public class ex_20_2_RemoteControlTest {
+public class ex20_2_RemoteControlTest {
 
     public static void main(String[] args)
     {

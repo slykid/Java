@@ -1,6 +1,6 @@
 package com.java.kilhyun.OOP;
 
-public class ex_20_1_AnonymousTest {
+public class ex20_1_AnonymousTest {
 
     public static void main(String[] args)
     {
