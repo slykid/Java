@@ -38,9 +38,21 @@ public class Student {
 		System.out.println("주소 : " + addr);
     }
 
-
     public String getStudentName()
     {
 		return name;
     }
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		// 다운 캐스팅을 위한 작업
+		if(obj instanceof Student)
+		{
+			Student std = (Student)obj;
+			return (this.studentId == std.studentId);
+		}
+
+		return false;
+	}
 }

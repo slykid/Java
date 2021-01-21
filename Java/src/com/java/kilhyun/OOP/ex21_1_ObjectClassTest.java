@@ -38,6 +38,26 @@ public class ex21_1_ObjectClassTest {
         // 비교를 위해 위에 재정의된 toString() 메소드를 주석처리 전후로 비교하면 됨
         System.out.println(str.toString()); // String 객체를 출력할 때는 String 객체.toString() 으로 출력되도록 되어있다.
 
+        System.out.println("=============================================");
+
+        System.out.println("2. equals()");
+
+        String str1 = new String("abc");
+        String str2 = new String("abc");
+
+        System.out.println(str1 == str2);  // 물리적으로 동일한지 (객체의 주소를 비교)
+        System.out.println(str1.equals(str2));  // 논리적으로 동일한지 (객체 내의 값을 비교)
+
+        System.out.println();
+
+        Student studentLee = new Student(100, "이상원");
+        Student studentLee2 = studentLee;
+        Student studentKim = new Student(100, "이상원");
+
+        System.out.println(studentLee == studentLee2);  // 서로 주소가 같기 때문에 true 반환
+        System.out.println(studentLee == studentKim);   // 서로 주소가 다르기 때문에 false 반환
+        System.out.println(studentLee.equals(studentKim));  // 논리적으로 같음을 재정의 해야된다.
+
     }
 
 }
