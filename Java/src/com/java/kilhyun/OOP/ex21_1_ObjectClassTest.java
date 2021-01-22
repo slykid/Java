@@ -96,6 +96,18 @@ public class ex21_1_ObjectClassTest {
         System.out.println(book2);  // cloneable 하지 않은 데 사용해서 컴파일 시 에러가 발생함
                                     // -> 해당 클래스에 Cloneable 인터페이스를 구현하도록 설정해주면 됨
 
+        System.out.println("=============================================");
+
+        System.out.println("5. finalize()");
+        Counter counter = null;
+        for(int i = 1; i <= 50; i++)
+        {
+            counter = new Counter(i);
+
+            counter = null;
+
+            System.gc();
+        }
     }
 
 }
