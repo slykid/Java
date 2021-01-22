@@ -1,6 +1,6 @@
 package com.java.kilhyun.OOP;
 
-class BookObj {
+class BookObj implements Cloneable{
 
     String title;
     String author;
@@ -13,16 +13,22 @@ class BookObj {
 
     // toString 메소드 재정의
     @Override
-    public String toString() {
+    public String toString()
+    {
         return author + "." + title;
     }
 
+    // 반드시 class 가 Cloneable 인터페이스를 구현한다는 것을 작성한 후 오버라이딩해야됨
+    @Override
+    protected Object clone() throws CloneNotSupportedException
+    {
+        return super.clone();
+    }
 }
 
 public class ex21_1_ObjectClassTest {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws CloneNotSupportedException {
         System.out.println("1. toString()");
 
         BookObj book = new BookObj("토지", "박경림");
@@ -78,6 +84,18 @@ public class ex21_1_ObjectClassTest {
         // 객체의 실제 주소 확인 방법
         System.out.println(System.identityHashCode(i1));  // 460141958
         System.out.println(System.identityHashCode(i2));  // 1163157884
+
+        System.out.println("=============================================");
+
+        System.out.println("4. clone()");
+
+        // 객체의 복사본을 생성함
+        // 정보은닉에 위배 가능성이 있기 때문에 복제할 객체를 cloneable 인터페이스를 명시해야함
+
+        BookObj book2 = (BookObj)book.clone();  // 메모리 복제를 통해 Exception 이 발생할 수 있음
+        System.out.println(book2);  // cloneable 하지 않은 데 사용해서 컴파일 시 에러가 발생함
+                                    // -> 해당 클래스에 Cloneable 인터페이스를 구현하도록 설정해주면 됨
+
     }
 
 }
