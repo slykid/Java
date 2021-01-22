@@ -55,4 +55,11 @@ public class Student {
 
 		return false;
 	}
+
+	@Override
+	public int hashCode()
+	{
+		// 일반적으로 equals 에서 활용했던 멤버를 사용하여 구현하면 됨
+		return studentId;
+	}
 }

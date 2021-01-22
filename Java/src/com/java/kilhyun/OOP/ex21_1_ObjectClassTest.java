@@ -58,6 +58,26 @@ public class ex21_1_ObjectClassTest {
         System.out.println(studentLee == studentKim);   // 서로 주소가 다르기 때문에 false 반환
         System.out.println(studentLee.equals(studentKim));  // 논리적으로 같음을 재정의 해야된다.
 
+        System.out.println("=============================================");
+
+        System.out.println("3. hashCode()");
+
+        // 두 개의 객체에 대한 값이 같다면, 두 객체의 해시코드 값도 동일하다.
+        System.out.println(studentLee.hashCode());
+        System.out.println(studentKim.hashCode());
+
+        System.out.println();
+
+        Integer i1 = new Integer(100);
+        Integer i2 = new Integer(100);
+
+        System.out.println(i1.equals(i2));  // true
+        System.out.println(i1.hashCode());  // 100
+        System.out.println(i2.hashCode());  // 100
+
+        // 객체의 실제 주소 확인 방법
+        System.out.println(System.identityHashCode(i1));  // 460141958
+        System.out.println(System.identityHashCode(i2));  // 1163157884
     }
 
 }
