@@ -45,6 +45,45 @@ public class ex21_6_ArrayClassTest {
         System.out.println("1차 배열 항목 비교: " + Arrays.equals(original, clone2));
         System.out.println("종합 배열 항목 비교: " + Arrays.deepEquals(original, clone2));
 
+        // 3. sort()
+        // 1) 숫자형 배열 정렬
+        int[] scores = {99, 77, 88};
+
+        Arrays.sort(scores);
+
+        for(int i = 0 ; i < scores.length; i++)
+        {
+            System.out.println("scores[" + i + "] : " + scores[i]);
+        }
+
+        System.out.println();
+
+        // 2. 문자형 배열 정렬
+        String[] names = {"홍길동", "김현수", "이순신"};
+        Arrays.sort(names);
+
+        for(int i = 0 ; i < names.length; i++)
+        {
+            System.out.println("names[" + i + "] : " + names[i]);
+        }
+
+        System.out.println();
+
+        // 3. 클래스 타입 배열
+        Member m1 = new Member("전소민");
+        Member m2 = new Member("유재석");
+        Member m3 = new Member("이광수");
+
+        Member[] members = {m1, m2, m3};
+        Arrays.sort(members);
+
+        for(int i = 0 ; i < members.length; i++)
+        {
+            System.out.println("members[" + i + "] : " + members[i].name);
+        }
+
+        System.out.println();
+
     }
 
 }
