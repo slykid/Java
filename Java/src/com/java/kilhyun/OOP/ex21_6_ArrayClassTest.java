@@ -58,7 +58,7 @@ public class ex21_6_ArrayClassTest {
 
         System.out.println();
 
-        // 2. 문자형 배열 정렬
+        // 2) 문자형 배열 정렬
         String[] names = {"홍길동", "김현수", "이순신"};
         Arrays.sort(names);
 
@@ -69,7 +69,7 @@ public class ex21_6_ArrayClassTest {
 
         System.out.println();
 
-        // 3. 클래스 타입 배열
+        // 3) 클래스 타입 배열
         Member m1 = new Member("전소민");
         Member m2 = new Member("유재석");
         Member m3 = new Member("이광수");
@@ -83,6 +83,39 @@ public class ex21_6_ArrayClassTest {
         }
 
         System.out.println();
+
+        // 4. 배열 검색
+        // 1) 숫자형 배열
+        scores = new int[]{99,67,83};
+
+        // 배열 오름차순 정렬
+        Arrays.sort(scores);
+
+        int idx = Arrays.binarySearch(scores, 83);
+        System.out.println("83's index: " + idx);
+
+
+        // 2) 문자열 배열
+        names = new String[]{"양세찬", "김종국", "송지효"};
+
+        Arrays.sort(names);
+
+        idx = Arrays.binarySearch(names, "송지효");
+        System.out.println("송지효's index: " + idx);
+
+
+        // 3) 클래스 배열
+        m1 = new Member("하동훈");
+        m2 = new Member("설민석");
+        m3 = new Member("최진기");
+
+        members = new Member[]{m1, m2, m3};
+
+        Arrays.sort(members);
+
+        idx = Arrays.binarySearch(members, m2);
+        System.out.println("m2' index: " + idx);
+
 
     }
 
