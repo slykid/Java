@@ -19,6 +19,24 @@ public class ex21_7_WrapperClassTest {
         System.out.println(obj1.intValue());
         System.out.println(obj2.intValue());
         System.out.println(obj3.intValue());
+
+        System.out.println();
+
+
+        // 3. 자동 박싱 & 언박싱
+        // 1) 자동 박싱
+        Integer objInt = 100;
+        System.out.println("objInt value: " + objInt.intValue());
+
+        System.out.println();
+
+        // 2) 자동 언박싱
+        int value = objInt;
+        System.out.println("value: " + value);
+
+        int result = objInt + 100;
+        System.out.println("result: " + result);
+
     }
 
 }
