@@ -1,5 +1,9 @@
 package com.java.kilhyun.OOP;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class ex22_1_ExceptionTest {
     /*
         오류
@@ -52,8 +56,58 @@ public class ex22_1_ExceptionTest {
             System.out.println(e.toString());
             System.out.println("예외처리");
         }
-        System.out.println("프로그램 종료");
-        
+
+        System.out.println();
+
+        // 2. try - catch - finally
+        FileInputStream fis = null;
+
+        try
+        {
+            fis = new FileInputStream("a.txt");
+
+            // 파일이 입력된 경로에 위치하면 수행함
+           System.out.println("파일을 정상적으로 읽었습니다.");
+        }
+        catch (FileNotFoundException e)
+        {
+            // 파일이 입력된 경로에 존재하지 않는 경우 실행됨
+            System.out.println("파일이 존재하지 않습니다.");
+            System.out.println(e);
+        }
+        finally
+        {
+            try
+            {
+                fis.close();
+                System.out.println("파일 읽기를 종료합니다.");
+            }
+            catch (Exception e)
+            {
+                System.out.println(e);
+            }
+            System.out.println("프로그램 종료");
+        }
+
+        System.out.println();
+
+        // 3. try - with - resource
+        try(FileInputStream fis1 = new FileInputStream("a.txt"))
+        {
+            // 파일이 입력된 경로에 위치하면 수행함
+            System.out.println("파일을 정상적으로 읽었습니다.");
+        }
+        catch (FileNotFoundException e)
+        {
+            // 파일이 입력된 경로에 존재하지 않는 경우 실행됨
+            System.out.println("파일이 존재하지 않습니다.");
+            System.out.println(e);
+        }
+        catch(IOException e)
+        {
+            System.out.println(e);
+        }
+
     }
 
 }
