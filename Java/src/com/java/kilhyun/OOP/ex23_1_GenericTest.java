@@ -19,15 +19,15 @@ public class ex23_1_GenericTest {
         powderPrinter.setMaterial(powder);
 
         System.out.println(powderPrinter.toString());
-
+        powderPrinter.printing();
         System.out.println();
 
         GenericPrinter<Plastic> plasticPrinter = new GenericPrinter<Plastic>();
         Plastic plastic = new Plastic();
         plasticPrinter.setMaterial(plastic);
 
-        System.out.println(powderPrinter.toString());
-
+        System.out.println(plasticPrinter.toString());
+        plasticPrinter.printing();
         // 재료에는 포함되는 안되는 물(water) 가 들어온다면?
         // - 상위클래스를 선언해서 재료에 해당하는 클래스가 상위클래스를 상속받도록 설정해주면,
         //   상속을 받는 재료들만 사용하도록 제약을 줄 수 있다.
