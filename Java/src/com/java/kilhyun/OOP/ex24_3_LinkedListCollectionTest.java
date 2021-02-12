@@ -31,6 +31,7 @@ public class ex24_3_LinkedListCollectionTest {
         }
         endTime = System.nanoTime();
         System.out.println("LinkedList 걸린시간: " + (endTime - startTime) + " ns");
+
     }
 
 }
