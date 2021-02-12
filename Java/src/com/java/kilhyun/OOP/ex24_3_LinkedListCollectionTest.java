@@ -1,5 +1,6 @@
 package com.java.kilhyun.OOP;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ public class ex24_3_LinkedListCollectionTest {
 
     public static void main(String[] args)
     {
-        List<String> linkedList1 = new LinkedList<String>();
+        List<String> linkedList1 = new ArrayList<String>();
         List<String> linkedList2 = new LinkedList<String>();
 
         long startTime;
@@ -30,7 +31,6 @@ public class ex24_3_LinkedListCollectionTest {
         }
         endTime = System.nanoTime();
         System.out.println("LinkedList 걸린시간: " + (endTime - startTime) + " ns");
-
     }
 
 }
