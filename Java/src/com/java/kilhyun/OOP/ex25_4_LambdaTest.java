@@ -1,14 +1,5 @@
 package com.java.kilhyun.OOP;
 
-<<<<<<< HEAD
-public class ex25_4_LambdaTest {
-
-    public static void main(String[] args)
-    {
-        UsingThis usingThis = new UsingThis();
-        UsingThis.Inner inner = usingThis.new Inner();
-        inner.method();
-=======
 interface PrintString
 {
     void showString(String str);
@@ -36,6 +27,5 @@ public class ex25_4_LambdaTest {
     public static PrintString returnString()
     {
         return s -> System.out.println(s + "!!!");
->>>>>>> 14e9944ebc413ae617dd81d8c712816f4e8ae8e6
     }
 }
