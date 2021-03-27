@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class ex_26_1_StreamTest {
+public class ex26_1_StreamTest {
 
     public static void main(String[] args)
     {
