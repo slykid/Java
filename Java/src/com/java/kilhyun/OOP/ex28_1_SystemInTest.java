@@ -7,14 +7,14 @@ public class ex28_1_SystemInTest {
 
     public static void main(String[] args)
     {
-        System.out.print("ì…ë ¥ (ëìœ¼ë¡œ ë“¤ì–´ì˜¨ ë¶€ë¶„ì—ì„œ ì…ë ¥ì¢…ë£Œ) : ");
+        System.out.print("ÀÔ·Â (³¡À¸·Î µé¾î¿Â ºÎºĞ¿¡¼­ ÀÔ·ÂÁ¾·á) : ");
 
-        // ì…ë ¥ ì‹œì—ëŠ” ë°˜ë“œì‹œ try - catch ë¬¸ë„ ê°™ì´ ì‘ì„±í•´ì¤„ ê²ƒ!
+        // ÀÔ·Â ½Ã¿¡´Â ¹İµå½Ã try - catch ¹®µµ °°ÀÌ ÀÛ¼ºÇØÁÙ °Í!
         try {
             int input;
-            InputStreamReader isr = new InputStreamReader(System.in); // í•œê¸€ = 2ë°”ì´íŠ¸ ì´ë¯€ë¡œ ë‹¨ìˆœ read() í•¨ìˆ˜ë¡œëŠ” ì½ê¸° ë¶ˆê°€ëŠ¥
+            InputStreamReader isr = new InputStreamReader(System.in); // ÇÑ±Û = 2¹ÙÀÌÆ® ÀÌ¹Ç·Î ´Ü¼ø read() ÇÔ¼ö·Î´Â ÀĞ±â ºÒ°¡´É
 
-            while ((input = isr.read()) != 'ë') {
+            while ((input = isr.read()) != '³¡') {
                 System.out.print((char) input);
                 System.out.print(" ");
             }

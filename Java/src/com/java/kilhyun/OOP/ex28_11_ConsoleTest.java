@@ -7,11 +7,10 @@ public class ex28_11_ConsoleTest {
     public static void main(String[] args) {
         Console console = System.console();
 
-        System.out.print("ì•„ì´ë””: ");
-
+        System.out.print("¾ÆÀÌµğ: ");
         String id = console.readLine();
 
-        System.out.print("íŒ¨ìŠ¤ì›Œë“œ: ");
+        System.out.print("ÆĞ½º¿öµå: ");
         char[] charPw = console.readPassword();
         String passwd = new String(charPw);
 
