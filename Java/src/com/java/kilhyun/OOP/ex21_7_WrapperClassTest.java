@@ -1,7 +1,5 @@
 package com.java.kilhyun.OOP;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 public class ex21_7_WrapperClassTest {
 
     public static void main(String[] args)
