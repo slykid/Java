@@ -37,6 +37,7 @@ public class ex29_6_DataInputOutputStreamTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
 }
