@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /*
+PUT API
+- 사용자로부터 요청받은 내용이 없으면, 새로 생성하고, 기존에 있는 객체라면 업데이트를 수행한다.
+- 예시
 {
     "name": "slykid",
     "age": 30,

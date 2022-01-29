@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 import java.util.List;
 
+// 변수명이 다른 경우
 @JsonNaming(value = PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class PutRequestDto {
 
