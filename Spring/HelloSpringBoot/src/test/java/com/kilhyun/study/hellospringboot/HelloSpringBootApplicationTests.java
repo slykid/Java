@@ -20,6 +20,10 @@ class HelloSpringBootApplicationTests {
         var text = objectMapper.writeValueAsString(user);
         System.out.println(text);
 
+        // Text to Object
+        // Object Mapper 는 default 생성자를 필요로 함
+        var objectUser = objectMapper.readValue(text, User.class);
+        System.out.println(objectUser);
     }
 
 }
