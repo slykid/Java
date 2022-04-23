@@ -15,8 +15,8 @@ class HelloSpringBootApplicationTests {
 
         var objectMapper = new ObjectMapper();
 
-        // Object to text
-        var user = new User("slykid", 30);
+        // Object to Text
+        var user = new User("slykid", 30, "010-1234-5678");
         var text = objectMapper.writeValueAsString(user);
         System.out.println(text);
 
