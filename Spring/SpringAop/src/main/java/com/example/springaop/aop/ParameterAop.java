@@ -22,7 +22,7 @@ public class ParameterAop {
     @Before("cut()")
     public void before(JoinPoint joinPoint) {
 
-        MethodSignature methodSignature = (MethodSignature) JoinPoint.getSignature();
+        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         Method method = methodSignature.getMethod();
         System.out.println(method.getName());
 
