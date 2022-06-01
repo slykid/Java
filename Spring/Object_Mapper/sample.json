@@ -1,0 +1,16 @@
+{
+  "name": "slykid",
+  "age":30,
+  "cars":[
+    {
+      "name":"K5",
+      "car_number":"11가 1111",
+      "TYPE":"sedan"
+    },
+    {
+      "name":"QM5",
+      "car_number":"22나 1234",
+      "TYPE":"SUV"
+    }
+  ]
+}
