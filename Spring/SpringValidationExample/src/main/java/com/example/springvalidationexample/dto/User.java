@@ -1,5 +1,7 @@
 package com.example.springvalidationexample.dto;
 
+import com.example.springvalidationexample.annotation.YearMonth;
+
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -19,6 +21,7 @@ public class User {
     private String phoneNumber;
 
     @Size(min=6, max=6)   // 길이는 만족할 수 있지만, 111111 과 같이 yyyymm 이 아닌 형식에도 통과할 수 있음
+    @YearMonth
     private String requestDate;  // 형식: yyyymm
 
 
@@ -62,19 +65,20 @@ public class User {
         this.requestDate = requestDate;
     }
 
-    @AssertTrue(message = "YYYYMM 형식에 맞지 않습니다.")
-    public boolean isRequestDateValidation() {
-
-        // 앞서 길이 검증으로 인해 발생할 수 있는 에러에 대한 별도 검증 로직 구현
-        try {
-            LocalDate localDate = LocalDate.parse(getRequestDate() + "01", DateTimeFormatter.ofPattern("yyyyMMdd"));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-
-        return true;
-    }
+//    YearMonthValidator 생성으로 인한 주석처리 (@YearMonth 어노테이션 설정이 안된 경우 주석해제)
+//    @AssertTrue(message = "YYYYMM 형식에 맞지 않습니다.")
+//    public boolean isRequestDateValidation() {
+//
+//        // 앞서 길이 검증으로 인해 발생할 수 있는 에러에 대한 별도 검증 로직 구현
+//        try {
+//            LocalDate localDate = LocalDate.parse(getRequestDate() + "01", DateTimeFormatter.ofPattern("yyyyMMdd"));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return false;
+//        }
+//
+//        return true;
+//    }
 
     @Override
     public String toString() {
