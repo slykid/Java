@@ -2,9 +2,13 @@ package com.example.springvalidationexample.dto;
 
 import com.example.springvalidationexample.annotation.YearMonth;
 
+import com.example.springvalidationexample.dto.Car;
+
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class User {
 
@@ -20,10 +24,12 @@ public class User {
     @Pattern(regexp="^[0-9]{3}-[0-9]{3,4}-[0-9]{4}$", message="전화번호 형식이 아닙니다.")
     private String phoneNumber;
 
-    @Size(min=6, max=6)   // 길이는 만족할 수 있지만, 111111 과 같이 yyyymm 이 아닌 형식에도 통과할 수 있음
+    @Size(min=6, max=8)   // 길이는 만족할 수 있지만, 111111 과 같이 yyyymm 이 아닌 형식에도 통과할 수 있음
     @YearMonth
     private String requestDate;  // 형식: yyyymm
 
+    @Valid    // Car 클래스에 Validation 이 추가되어있다고 한들, 해당 클래스를 참조하는 변수에 @Valid 를 추가하지 않으면 검사하지 않음
+    private List<Car> cars;
 
     public String getName() {
         return name;
@@ -80,6 +86,15 @@ public class User {
 //        return true;
 //    }
 
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -87,7 +102,8 @@ public class User {
                 ", age=" + age +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", requestDate='" + requestDate + '\'' +
+                ", cars=" + cars +
                 '}';
     }
-
 }
