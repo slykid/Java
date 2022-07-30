@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
-@JsonNaming(value=PropertyNamingStrategy.SnakeCaseStrategy.class)
-@JsonInclude(value=JsonInclude.Include.NON_NULL)
+@JsonNaming(value = PropertyNamingStrategy.SnakeCaseStrategy.class)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class UserDto {
 
     private String name;
@@ -29,8 +29,8 @@ public class UserDto {
 
     // Wrapper Class로 변경
     public Integer getAge() {
-    return age;
-}
+        return age;
+    }
 
     public void setAge(int age) {
         this.age = age;

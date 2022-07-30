@@ -9,12 +9,12 @@ import java.util.Map;
 @RequestMapping("/api/get")
 public class GetApiController {
 
-    @GetMapping(path="/hello")   // http://localhost:9090/api/get/hello
+    @GetMapping(path = "/hello")   // http://localhost:9090/api/get/hello
     public String getHello() {
         return "Get Hello!";
     }
 
-    @RequestMapping(path = "/hi", method= RequestMethod.GET)   // http://localhost:9090/api/get/hi
+    @RequestMapping(path = "/hi", method = RequestMethod.GET)   // http://localhost:9090/api/get/hi
     public String getHi() {
         return "Get Hi!";
     }
@@ -35,16 +35,16 @@ public class GetApiController {
     // - http://localhost:9090/api/get/query-param?user={계정}&email={이메일주소}&age={나이}
     // ex. http://localhost:9090/api/get/query-param?user=slykid&email=slykid@naver.com&age=29
     @GetMapping("query-param")
-    public String queryParam(@RequestParam Map<String, String> queryParam){
+    public String queryParam(@RequestParam Map<String, String> queryParam) {
 
         StringBuilder sb = new StringBuilder();
 
         queryParam.entrySet().forEach(entry -> {
-           System.out.println(entry.getKey());
-           System.out.println(entry.getValue());
-           System.out.print("\n");
+            System.out.println(entry.getKey());
+            System.out.println(entry.getValue());
+            System.out.print("\n");
 
-           sb.append(entry.getKey() + " = " + entry.getValue() + "\n");
+            sb.append(entry.getKey() + " = " + entry.getValue() + "\n");
         });
 
         return sb.toString();
