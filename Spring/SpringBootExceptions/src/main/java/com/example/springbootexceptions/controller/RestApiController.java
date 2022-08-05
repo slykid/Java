@@ -34,10 +34,10 @@ public class RestApiController {
 
     // 방법 3. 해당 컨트롤러에 추가하기
     // - GlobalControllerAdvice 로 잡혀있더라도 우선 순위는 실행된 컨트롤러 내의 ExceptionHandler 가 더 높다.
-    @ExceptionHandler(value = MethodArgumentNotValidException.class)
-    public ResponseEntity MethodArgumentNotValidException(MethodArgumentNotValidException e) {
-
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-    }
+//    @ExceptionHandler(value = MethodArgumentNotValidException.class)
+//    public ResponseEntity MethodArgumentNotValidException(MethodArgumentNotValidException e) {
+//
+//        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+//    }
 
 }
