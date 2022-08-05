@@ -11,8 +11,7 @@ public class ResponseTestController {
 
     // TEXT (사용할 일 거의 없음)
     @GetMapping("/return_text")
-    public String returnText(@RequestParam String account)
-    {
+    public String returnText(@RequestParam String account) {
         return account;
     }
 

@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApiController {
 
     @GetMapping("/hello")  // http://localhost:9090/api/hello
-    public String hello()
-    {
+    public String hello() {
         return "Hello SpringBoot";
     }
 

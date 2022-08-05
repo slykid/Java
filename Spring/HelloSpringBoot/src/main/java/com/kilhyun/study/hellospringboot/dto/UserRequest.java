@@ -31,8 +31,7 @@ public class UserRequest {
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "UserRequest{" +
                 "name= '" + name + '\'' +
                 ", email= '" + email + '\'' +
