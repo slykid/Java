@@ -6,13 +6,15 @@ import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
 
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 
 @Slf4j
-@Component
+//@Component
+@WebFilter(urlPatterns = "/api/user/*")
 public class GlobalFilter implements Filter {
 
     @Override
