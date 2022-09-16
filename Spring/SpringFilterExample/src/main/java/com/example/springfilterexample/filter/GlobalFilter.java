@@ -13,8 +13,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 @Slf4j
-//@Component
-@WebFilter(urlPatterns = "/api/user/*")
+@Component
+//@WebFilter(urlPatterns = "/api/user/*")
 public class GlobalFilter implements Filter {
 
     @Override
@@ -38,13 +38,13 @@ public class GlobalFilter implements Filter {
 
         // 후처리(ContentCaching 사용 시, 위의 BufferedReader 에서 수행하는 역할을 아래에서 해야됨)
         // - request
-        String reqContent = new String(httpServletRequest.getContentAsByteArray());
-        log.info("Request URL: {}, Request Body: {}", url, reqContent);
-
-        String resContent = new String(httpServletResponse.getContentAsByteArray());
-        int httpStatus = httpServletResponse.getStatus();
-
-        log.info("Response status : {}, Response Body: {}", httpStatus, resContent);
+//        String reqContent = new String(httpServletRequest.getContentAsByteArray());
+//        log.info("Request URL: {}, Request Body: {}", url, reqContent);
+//
+//        String resContent = new String(httpServletResponse.getContentAsByteArray());
+//        int httpStatus = httpServletResponse.getStatus();
+//
+//        log.info("Response status : {}, Response Body: {}", httpStatus, resContent);
 
     }
 }
