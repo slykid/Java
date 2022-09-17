@@ -32,12 +32,12 @@ public class AuthInterceptor extends InterceptorRegistry implements HandlerInter
 
         // 서버는 모두 public 으로 동작하지만
         // Auth 권한을 가진 요청에 대해서는 세션, 쿠키 등
-        if(hasAnnotation) {
+        if (hasAnnotation) {
             // 권한 체크
             String query = uri.getQuery();
             log.info("Query: {}", query);
 
-            if(query.equals("name=slykid")) {
+            if (query.equals("name=slykid")) {
                 return true;
             }
 
@@ -45,20 +45,20 @@ public class AuthInterceptor extends InterceptorRegistry implements HandlerInter
 
         }
 
-        return false;  // false 로 설정되어 있으면, Interceptor 까지 도달하지 못했기 때문에 void 로 반환
+        return true;  // false 로 설정되어 있으면, Interceptor 까지 도달하지 못했기 때문에 void 로 반환
     }
 
     private boolean checkAnnotation(Object handler, Class clazz) {
 
         // resource javascript, html, ...
-        if(handler instanceof ResourceHttpRequestHandler) {
+        if (handler instanceof ResourceHttpRequestHandler) {
             return true;
         }
 
         // annotation check
         HandlerMethod handlerMethod = (HandlerMethod) handler;
 
-        if(handlerMethod.getMethodAnnotation(clazz) != null || handlerMethod.getBeanType().getAnnotation(clazz) != null) {
+        if (handlerMethod.getMethodAnnotation(clazz) != null || handlerMethod.getBeanType().getAnnotation(clazz) != null) {
             // Auth 어노테이션이 있을 경우 true,
             return true;
         }
