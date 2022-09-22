@@ -1,5 +1,5 @@
 package com.example.springinterceptor.exception;
 
 
-public class AuthException extends RuntimeException{
+public class AuthException extends RuntimeException {
 }
