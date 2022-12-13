@@ -1,0 +1,29 @@
+package com.example.client.controller;
+
+import com.example.client.service.RestTemplateService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/client")
+public class ApiController {
+
+    // 옛날 방식
+    // @Autowired
+    // private RestTemplateService restTemplateService;
+
+    // 최근에는 생성자 주입방식으로 많이 사용함
+    // 이 외에도 Lombok 을 활용하는 방법이 있음
+    private final RestTemplateService restTemplateService;
+
+    public ApiController(RestTemplateService restTemplateService) {
+        this.restTemplateService = restTemplateService;
+    }
+
+    @GetMapping("/hello")
+    public String getHello() {
+        return restTemplateService.hello();
+    }
+}
