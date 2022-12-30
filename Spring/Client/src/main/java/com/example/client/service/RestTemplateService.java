@@ -20,13 +20,14 @@ public class RestTemplateService {
 
     */
 
-    public UserResponse hello() {
+//    public String hello() {
+    public UserResponse hello(String name, int age) {
         // URIBuilder 에는 URL 뿐만 아니라 QueryParam 등도 지원해준다.
         URI uri = UriComponentsBuilder
                 .fromUriString("http://localhost:9090")
                 .path("api/server/hello")
-                .queryParam("name", "slykid") // http://localhost:9090/api/server/hello?name=slykid&age=30
-                .queryParam("age", 30)        // http://localhost:9090/api/server/hello?name=slykid&age=30
+                .queryParam("name", name)
+                .queryParam("age", age)
                 .encode()
                 .build()
                 .toUri();
@@ -34,13 +35,14 @@ public class RestTemplateService {
         System.out.println(uri.toString());
 
         RestTemplate restTemplate = new RestTemplate();
-        // String result = restTemplate.getForObject(uri, String.class);
+//         String result = restTemplate.getForObject(uri, String.class);
+//        ResponseEntity<String> result = restTemplate.getForEntity(uri, String.class);
         ResponseEntity<UserResponse> result = restTemplate.getForEntity(uri, UserResponse.class);
 
         System.out.println(result.getStatusCode());
         System.out.println(result.getBody());
 
-        // return result;
+//         return result;
         return result.getBody();
     }
 }
