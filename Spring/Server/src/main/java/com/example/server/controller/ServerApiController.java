@@ -27,8 +27,22 @@ public class ServerApiController {
 
     @PostMapping("/user/{userId}/name/{userName}")
     public User post(@RequestBody User user, @PathVariable int userId, @PathVariable String userName) {
-        log.info("User ID: {}", userId);
-        log.info("User Name: {}", userName);
+        log.info("User ID: {}, User Name: {}", userId, userName);
+        log.info("Client Request : {}", user);
+
+        return user;
+
+    }
+
+    @PostMapping("/userexchange/{userId}/name/{userName}")
+    public User exchange(@RequestBody User user,
+                     @PathVariable int userId,
+                     @PathVariable String userName,
+                     @RequestHeader("x-authorization") String authorization,
+                     @RequestHeader("custom-header") String customHeader
+    ) {
+        log.info("User ID: {}, User Name: {}", userId, userName);
+        log.info("authorization: {}, custom: {}", authorization, customHeader);
         log.info("Client Request : {}", user);
 
         return user;

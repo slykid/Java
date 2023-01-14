@@ -32,4 +32,9 @@ public class ApiController {
         return restTemplateService.post();
     }
 
+    @PostMapping("/userexchange")
+    public UserResponse exchangeHello(){
+        return restTemplateService.exchange();
+    }
+
 }

@@ -2,6 +2,7 @@ package com.example.client.service;
 
 import com.example.client.dto.UserRequest;
 import com.example.client.dto.UserResponse;
+import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -73,6 +74,36 @@ public class RestTemplateService {
         System.out.println(response.getStatusCode());
         System.out.println(response.getHeaders());
         System.out.println(response.getBody());
+
+        return response.getBody();
+    }
+
+    public UserResponse exchange() {
+        // http://localhost:9090/api/server/userexchange/{userId}/name/{userName}
+        URI uri = UriComponentsBuilder
+                .fromUriString("http://localhost:9090")
+                .path("/api/server/userexchange/{userId}/name/{userName}")
+                .encode()
+                .build()
+                .expand(100, "slykid")
+                .toUri();
+
+        System.out.println("URI : " + uri);
+
+        // http body -> object -> object mapper -> json -> rest template -> http
+        UserRequest req = new UserRequest();
+        req.setName("slykid");
+        req.setAge(30);
+
+        RequestEntity<UserRequest> requestEntity = RequestEntity
+                .post(uri)
+                .contentType(MediaType.APPLICATION_JSON)
+                .header("x-authorization", "abcd")
+                .header("custom-header", "fffff")
+                .body(req);
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<UserResponse> response = restTemplate.exchange(requestEntity, UserResponse.class);
 
         return response.getBody();
     }
