@@ -23,7 +23,7 @@ public class RestTemplateService {
 
     */
 
-//    public String hello() {
+    //    public String hello() {
     public UserResponse hello(String name, int age) {
         // URIBuilder 에는 URL 뿐만 아니라 QueryParam 등도 지원해준다.
         URI uri = UriComponentsBuilder

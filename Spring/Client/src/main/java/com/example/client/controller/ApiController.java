@@ -28,12 +28,12 @@ public class ApiController {
     }
 
     @PostMapping("/user")
-    public UserResponse postHello(){
+    public UserResponse postHello() {
         return restTemplateService.post();
     }
 
     @PostMapping("/userexchange")
-    public UserResponse exchangeHello(){
+    public UserResponse exchangeHello() {
         return restTemplateService.exchange();
     }
 
