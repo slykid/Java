@@ -1,7 +1,9 @@
 package com.example.client.service;
 
+import com.example.client.dto.Req;
 import com.example.client.dto.UserRequest;
 import com.example.client.dto.UserResponse;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.lang.reflect.ParameterizedType;
 import java.net.URI;
 
 @Service
@@ -105,6 +108,51 @@ public class RestTemplateService {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<UserResponse> response = restTemplate.exchange(requestEntity, UserResponse.class);
 
+        return response.getBody();
+    }
+
+    public Req<UserResponse> genericExchange() {
+        // http://localhost:9090/api/server/genericexchange/{userId}/name/{userName}
+        URI uri = UriComponentsBuilder
+                .fromUriString("http://localhost:9090")
+                .path("/api/server/genericexchange/{userId}/name/{userName}")
+                .encode()
+                .build()
+                .expand(100, "slykid")
+                .toUri();
+
+        System.out.println("URI : " + uri);
+
+        // http body -> object -> object mapper -> json -> rest template -> http
+        UserRequest userRequest = new UserRequest();
+        userRequest.setName("slykid");
+        userRequest.setAge(30);
+
+        Req<UserRequest> req = new Req<UserRequest>();
+        req.setHeader(
+            new Req.Header()
+        );
+
+        req.setBody(
+            userRequest
+        );
+
+        RequestEntity<Req<UserRequest>> requestEntity = RequestEntity
+                .post(uri)
+                .contentType(MediaType.APPLICATION_JSON)
+                .header("x-authorization", "abcd")
+                .header("custom-header", "fffff")
+                .body(req);
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        // Parameterized Type Reference
+        // - exchange 메소드 특성 상 요청할 객체와 반환할 클래스를 매개변수로 넣어줘야하나,
+        //   제네릭은 클래스로 사용할 수 없기 때문에 이를 대응하기 위한 수단임
+        ResponseEntity<Req<UserResponse>> response =
+                restTemplate.exchange(requestEntity, new ParameterizedTypeReference<Req<UserResponse>>(){});
+
+//        return response.getBody().getBody();  // 첫번째 getBody는 반환 값이 제네릭 타입이며, 우리가 실질적으로 반환해줄 값은 그 안의 Body 에 존재함
         return response.getBody();
     }
 
