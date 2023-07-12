@@ -10,6 +10,7 @@ public class DollarCalculatorTest {
 
     }
 
+    @Test
     public void dollarTest()
     {
         MarketApi marketApi = new MarketApi();
