@@ -8,6 +8,7 @@ class SpringCalculatorApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }

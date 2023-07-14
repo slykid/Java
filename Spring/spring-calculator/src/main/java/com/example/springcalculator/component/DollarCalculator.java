@@ -10,6 +10,7 @@ public class DollarCalculator implements ICalculator {
     private int price = 1;
     private final MarketApi marketApi;
 
+    @Override
     public void init() {
         this.price = marketApi.connect();
     }
