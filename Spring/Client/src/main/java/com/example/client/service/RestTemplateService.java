@@ -130,11 +130,11 @@ public class RestTemplateService {
 
         Req<UserRequest> req = new Req<UserRequest>();
         req.setHeader(
-            new Req.Header()
+                new Req.Header()
         );
 
         req.setBody(
-            userRequest
+                userRequest
         );
 
         RequestEntity<Req<UserRequest>> requestEntity = RequestEntity
@@ -150,7 +150,8 @@ public class RestTemplateService {
         // - exchange 메소드 특성 상 요청할 객체와 반환할 클래스를 매개변수로 넣어줘야하나,
         //   제네릭은 클래스로 사용할 수 없기 때문에 이를 대응하기 위한 수단임
         ResponseEntity<Req<UserResponse>> response =
-                restTemplate.exchange(requestEntity, new ParameterizedTypeReference<Req<UserResponse>>(){});
+                restTemplate.exchange(requestEntity, new ParameterizedTypeReference<Req<UserResponse>>() {
+                });
 
 //        return response.getBody().getBody();  // 첫번째 getBody는 반환 값이 제네릭 타입이며, 우리가 실질적으로 반환해줄 값은 그 안의 Body 에 존재함
         return response.getBody();
