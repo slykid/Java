@@ -80,11 +80,11 @@ public class ServerApiController {
 
     @PostMapping("/userexchange/{userId}/name/{userName}")
     public User exchange(
-        @RequestBody User user,
-        @PathVariable int userId,
-        @PathVariable String userName,
-        @RequestHeader("x-authorization") String authorization,
-        @RequestHeader("custom-header") String customHeader
+            @RequestBody User user,
+            @PathVariable int userId,
+            @PathVariable String userName,
+            @RequestHeader("x-authorization") String authorization,
+            @RequestHeader("custom-header") String customHeader
     ) {
         log.info("User ID: {}, User Name: {}", userId, userName);
         log.info("authorization: {}, custom: {}", authorization, customHeader);
@@ -97,11 +97,11 @@ public class ServerApiController {
     @PostMapping("/genericexchange/{userId}/name/{userName}")
     public Req<User> genericexchange(
 //                         HttpEntity<String> entity,
-                         @RequestBody Req<User> user,
-                         @PathVariable int userId,
-                         @PathVariable String userName,
-                         @RequestHeader("x-authorization") String authorization,
-                         @RequestHeader("custom-header") String customHeader
+            @RequestBody Req<User> user,
+            @PathVariable int userId,
+            @PathVariable String userName,
+            @RequestHeader("x-authorization") String authorization,
+            @RequestHeader("custom-header") String customHeader
     ) {
 //        log.info("req: {}", entity.getBody());  // HTTP Entity 확인용
         log.info("User ID: {}, User Name: {}", userId, userName);
