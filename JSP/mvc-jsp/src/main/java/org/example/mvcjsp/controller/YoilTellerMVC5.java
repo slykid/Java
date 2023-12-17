@@ -24,6 +24,10 @@ public class YoilTellerMVC5
 //    public String main(@ModelAttribute("myDate") MyDate date, Model model)
 //    - @ModelAttribute: 적용대상을 Model 속성으로 자동 추가해주는 어노테이션, 반환타입 또는 컨트롤러 메소드의 매개변수에 적용가능
 //    - 반드시 참조형 매개변수 앞에 붙여줘야 함 (생략 가능)
+//
+//    * 컨트롤러 매개변수
+//    - 기본형, String 형인 경우: RequestParam 생략
+//    - 참조형인 경우: ModelAttribute 생략
     public String main(@ModelAttribute MyDate date, Model model)
     {
         if(!isValid(date))
