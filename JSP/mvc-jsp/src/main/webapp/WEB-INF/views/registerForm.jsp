@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,7 +68,8 @@
     <title>Register</title>
 </head>
 <body>
-   <form>
+<%--   <form action="registerInfo.jsp" method="POST" onsubmit="return formCheck(this)"> --%> <%-- HTML 일때 --%>
+    <form action="<c:url value=/register/save" />" method="POST" onsubmit="return formCheck(this)">
     <div class="title">Register</div>
     <div id="msg" class="msg"> </div>
     <label for="">아이디</label>
@@ -91,7 +94,12 @@
             var msg ='';
 
             if(frm.id.value.length<3) {
-                setMessage('id의 길이는 3이상이어야 합니다.', frm.id);
+                setMessage('id의 길이는 3자리 이상이어야 합니다.', frm.id);
+                return false;
+            }
+
+            if(frm.pwd.value.length<8) {
+                setMessage('pwd의 길이는 8자리 이상이어야 합니다.', frm.pwd);
                 return false;
             }
 
@@ -99,7 +107,8 @@
        }
 
        function setMessage(msg, element){
-            document.getElementById("msg").innerHTML = `<i class="fa fa-exclamation-circle"> ${msg}</i>`;
+            <%--document.getElementById("msg").innerHTML = `<i class="fa fa-exclamation-circle"> ${msg}</i>`;--%> <%-- HTML 일때 --%>
+            document.getElementById("msg").innerHTML = `<i class="fa fa-exclamation-circle"> ${'${msg}'}</i>`;
 
             if(element) {
                 element.select();
