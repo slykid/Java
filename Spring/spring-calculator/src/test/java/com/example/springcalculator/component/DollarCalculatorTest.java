@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 
-@SpringBootTest // SpringBoot 에서 관리 중인 모든 객체를 주입하고자 할 때는 @SpringBootTest 어노테이션을 사용
+//@SpringBootTest // SpringBoot 에서 관리 중인 모든 객체를 주입하고자 할 때는 @SpringBootTest 어노테이션을 사용
 @Import({MarketApi.class, DollarCalculator.class})  // 특정 객체만 주입하고자 할 때는 @Import 어노테이션을 사용
 public class DollarCalculatorTest {
 
