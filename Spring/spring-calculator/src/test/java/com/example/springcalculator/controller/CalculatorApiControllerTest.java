@@ -38,8 +38,7 @@ public class CalculatorApiControllerTest {
     }
 
     @Test
-    public void sumTest() throws Exception{
-        // http://localhost:8080/api/sum
+    public void sumTest() throws Exception {
 
         mockMvc.perform(
                 MockMvcRequestBuilders.get("http://localhost:8080/api/sum")
@@ -78,6 +77,5 @@ public class CalculatorApiControllerTest {
         ).andDo(MockMvcResultHandlers.print());
         // 이대로 실행하면 Body = {"result":0,"response":null} 요렇게 나옴 -> CalculatorApiController.java 로 이동해서 수정해줄 것
     }
-
 
 }

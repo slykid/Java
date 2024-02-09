@@ -17,8 +17,8 @@ public class Res {
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class Body{
-        private String resultCode= "OK";
+    public static class Body {
+        private String resultCode = "OK";
     }
 
 }
