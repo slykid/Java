@@ -18,15 +18,14 @@ public class DollarCalculatorTest {
     private MarketApi marketApi;
 
     @Autowired
-    private DollarCalculator calculator;
+    private Calculator calculator;
 
     @Test
     public void dollarCalculatorTest() {
 
         Mockito.when(marketApi.connect()).thenReturn(3000);
-        calculator.init();
 
-        int sum = calculator.sum(10 ,10);
+        int sum = calculator.sum(10, 10);
         int minus = calculator.minus(10, 10);
 
         Assertions.assertEquals(60000, sum);
