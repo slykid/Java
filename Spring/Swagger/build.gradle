@@ -27,12 +27,9 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-    // https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter
-    // implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
-
-	// Spring 3.X 부터는 아래를 Dependency 로 넣어야 함
-	// 애플리케이션 실행 후 접속 주소: http://localhost:8080/swagger-ui/index.html/
-	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
+	// 스프링3 이상에서는 springdoc-openapi-starter 를 사용 (*공식문서 참고)
+   	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-api:2.5.0'
 }
 
 tasks.named('test') {
