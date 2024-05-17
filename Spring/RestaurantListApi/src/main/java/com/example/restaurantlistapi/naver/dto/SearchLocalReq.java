@@ -1,4 +1,4 @@
-package com.example.restaurant.naver.dto;
+package com.example.restaurantlistapi.naver.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import org.springframework.util.MultiValueMap;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SearchImageReq {
+public class SearchLocalReq {
 
     private String query = "";
 
@@ -17,9 +17,7 @@ public class SearchImageReq {
 
     private int start = 1;
 
-    private String sort = "sim";
-
-    private String filter = "all";
+    private String sort = "random";
 
     public MultiValueMap<String, String> toMultiValueMap(){
         var map = new LinkedMultiValueMap<String, String>();
@@ -28,7 +26,6 @@ public class SearchImageReq {
         map.add("display",String.valueOf(display));
         map.add("start", String.valueOf(start));
         map.add("sort",sort);
-        map.add("filter",filter);
         return map;
     }
 }

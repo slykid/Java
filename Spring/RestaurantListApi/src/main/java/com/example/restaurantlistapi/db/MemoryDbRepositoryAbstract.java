@@ -1,4 +1,4 @@
-package com.example.restaurant.db;
+package com.example.restaurantlistapi.db;
 
 import java.util.ArrayList;
 import java.util.List;
