@@ -10,6 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class PageController {
 
     public ModelAndView main() {
-        return new ModelAndView("main");
+        return new ModelAndView("html/main");
     }
 }
