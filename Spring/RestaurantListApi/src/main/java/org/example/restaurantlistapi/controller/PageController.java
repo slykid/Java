@@ -1,4 +1,4 @@
-package com.example.restaurant.controller;
+package org.example.restaurantlistapi.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package com.example.restaurant.wishlist.dto;
+package org.example.restaurantlistapi.wishlist.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

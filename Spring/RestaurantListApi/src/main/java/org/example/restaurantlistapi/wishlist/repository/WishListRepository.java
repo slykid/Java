@@ -1,7 +1,7 @@
-package com.example.restaurant.wishlist.repository;
+package org.example.restaurantlistapi.wishlist.repository;
 
-import com.example.restaurant.db.MemoryDbRepositoryAbstract;
-import com.example.restaurant.wishlist.entity.WishListEntity;
+import org.example.restaurantlistapi.db.MemoryDbRepositoryAbstract;
+import org.example.restaurantlistapi.wishlist.entity.WishListEntity;
 import org.springframework.stereotype.Repository;
 
 @Repository

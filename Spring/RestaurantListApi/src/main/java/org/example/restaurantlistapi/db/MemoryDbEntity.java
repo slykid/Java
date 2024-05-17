@@ -1,4 +1,4 @@
-package com.example.restaurant.db;
+package org.example.restaurantlistapi.db;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

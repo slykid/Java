@@ -1,7 +1,7 @@
-package com.example.restaurant.naver;
+package org.example.restaurantlistapi.naver;
 
-import com.example.restaurant.naver.dto.SearchImageReq;
-import com.example.restaurant.naver.dto.SearchLocalReq;
+import org.example.restaurantlistapi.naver.dto.SearchImageReq;
+import org.example.restaurantlistapi.naver.dto.SearchLocalReq;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

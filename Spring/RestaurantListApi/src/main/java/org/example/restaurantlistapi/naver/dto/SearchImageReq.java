@@ -1,4 +1,4 @@
-package com.example.restaurant.naver.dto;
+package org.example.restaurantlistapi.naver.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

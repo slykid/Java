@@ -1,10 +1,9 @@
-package com.example.restaurant.controller;
+package org.example.restaurantlistapi.controller;
 
-import com.example.restaurant.wishlist.dto.WishListDto;
-import com.example.restaurant.wishlist.service.WishListService;
+import org.example.restaurantlistapi.wishlist.dto.WishListDto;
+import org.example.restaurantlistapi.wishlist.service.WishListService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
