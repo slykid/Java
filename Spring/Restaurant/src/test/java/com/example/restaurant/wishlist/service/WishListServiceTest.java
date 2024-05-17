@@ -1,4 +1,4 @@
-package com.example.restaurantlistapi.wishlist.service;
+package com.example.restaurant.wishlist.service;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
