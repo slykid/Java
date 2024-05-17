@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/pages")
 public class PageController {
 
+    @GetMapping("/main")
     public ModelAndView main() {
         return new ModelAndView("html/main");
     }
