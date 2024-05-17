@@ -1,12 +1,12 @@
-package com.example.restaurant.wishlist.service;
+package org.example.restaurantlistapi.wishlist.service;
 
-import com.example.restaurant.naver.NaverClient;
-import com.example.restaurant.naver.dto.SearchImageReq;
-import com.example.restaurant.naver.dto.SearchLocalReq;
-import com.example.restaurant.wishlist.dto.WishListDto;
-import com.example.restaurant.wishlist.entity.WishListEntity;
-import com.example.restaurant.wishlist.repository.WishListRepository;
 import lombok.RequiredArgsConstructor;
+import org.example.restaurantlistapi.naver.NaverClient;
+import org.example.restaurantlistapi.naver.dto.SearchLocalReq;
+import org.example.restaurantlistapi.naver.dto.SearchImageReq;
+import org.example.restaurantlistapi.wishlist.dto.WishListDto;
+import org.example.restaurantlistapi.wishlist.entity.WishListEntity;
+import org.example.restaurantlistapi.wishlist.repository.WishListRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,10 +23,12 @@ public class WishListService {
         // 지역검색
         var searchLocalReq = new SearchLocalReq();
         searchLocalReq.setQuery(query);
+
         var searchLocalRes = naverClient.searchLocal(searchLocalReq);
 
         if (searchLocalRes.getTotal() > 0) {
             var localItem = searchLocalRes.getItems().stream().findFirst().get();
+
             var imageQuery = localItem.getTitle().replaceAll("<[^>]*>", "");
             var searchImageReq = new SearchImageReq();
             searchImageReq.setQuery(imageQuery);
@@ -37,7 +39,7 @@ public class WishListService {
             if (searchImageRes.getTotal() > 0) {
                 var imageItem = searchImageRes.getItems().stream().findFirst().get();
 
-                // 결과를 리턴
+                // 결과 리턴
                 var result = new WishListDto();
                 result.setTitle(localItem.getTitle());
                 result.setCategory(localItem.getCategory());
@@ -45,22 +47,19 @@ public class WishListService {
                 result.setRoadAddress(localItem.getRoadAddress());
                 result.setHomePageLink(localItem.getLink());
                 result.setImageLink(imageItem.getLink());
+
                 return result;
             }
+
         }
 
         return new WishListDto();
-    }
 
-    public WishListDto add(WishListDto wishListDto) {
-        var entity = dtoToEntity(wishListDto);
-        var saveEntity = wishListRepository.save(entity);
-        return entityToDto(saveEntity);
     }
-
 
     private WishListEntity dtoToEntity(WishListDto wishListDto) {
         var entity = new WishListEntity();
+
         entity.setIndex(wishListDto.getIndex());
         entity.setTitle(wishListDto.getTitle());
         entity.setCategory(wishListDto.getCategory());
@@ -89,6 +88,14 @@ public class WishListService {
         return dto;
     }
 
+
+    public WishListDto add(WishListDto wishListDto) {
+        var entity = dtoToEntity(wishListDto);
+        var saveEntity = wishListRepository.save(entity);
+
+        return entityToDto(saveEntity);
+    }
+
     public List<WishListDto> findAll() {
         return wishListRepository.findAll()
                 .stream()
@@ -102,10 +109,13 @@ public class WishListService {
 
     public void addVisit(int index) {
         var wishItem = wishListRepository.findById(index);
+
         if (wishItem.isPresent()) {
             var item = wishItem.get();
+
             item.setVisit(true);
             item.setVisitCount(item.getVisitCount() + 1);
         }
     }
+
 }
