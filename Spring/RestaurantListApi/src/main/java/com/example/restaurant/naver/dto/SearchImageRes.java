@@ -6,25 +6,27 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
 public class SearchImageRes {
+
     private String lastBuildDate;
     private int total;
     private int start;
     private int display;
-    private List<SearchLocalItem> items;
+    private List<SearchImageItem> items;
 
+
+
+    @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    @Data
-    public static class SearchLocalItem {
+    public static class SearchImageItem {
         private String title;
         private String link;
         private String thumbnail;
-        private String sizeHeight;
-        private String sizeWidth;
+        private String sizeheight;
+        private String sizewidth;
     }
-
 }
