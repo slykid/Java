@@ -39,11 +39,25 @@
 
 * WishListRepository: MemoryDbRepositoryAbstract 추상클래스를 상속받아 구현하는 클래스
 
+* WishListService: 맛집 검색 API 및 위시리스트 추가 메소드 구현
+
 ## 1.3 Naver API REST 방식으로 구현하기
 
 * naver 패키지 이하에 생성
+  * NaverClient: 네이버용 클라이언트 정보 및 API 호출 메소드 구현
 
-* 
+  * 지역검색 API
+    * SearchLocalReq: 지역검색 API 요청 DTO
+    * SearchLocalRes: 지역검색 API 응답 DTO
 
+  * 이미지 검색 API
+    * SearchImageReq: 이미지 검색 API 요청 DTO
+    * SearchImageRes: 이미지 검색 API 응답 DTO
 
+## 1.4 Controller & View 추가
 
+* ApiController: 서비스로 연결되는 컨트롤메소드 구현
+* PageController: View로 연결되는 페이지메소드 구현
+
+* resource/templates/html/main.html: View
+* resource/static/js/main.js: View와 연동되는 기능 구현
