@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 @Data // @Getter + @Setter + @ToString + @EqualsAndHashCode + @RequiredArgsConstructor
 @NoArgsConstructor
 @AllArgsConstructor
+@RequiredArgsConstructor
 @Builder // Builder 형식으로 객체 생성 + 필드값 주입을 수행함
 public class User {
     @NonNull
