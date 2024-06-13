@@ -1,6 +1,7 @@
 package com.slykid.jpa.bookmanager.domain;
 
 import lombok.*;
+
 import java.time.LocalDateTime;
 
 @Data // @Getter + @Setter + @ToString + @EqualsAndHashCode + @RequiredArgsConstructor
