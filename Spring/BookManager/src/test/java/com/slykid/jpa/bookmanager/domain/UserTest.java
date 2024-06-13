@@ -16,7 +16,7 @@ class UserTest {
         System.out.println("User: " + user.getName() + " / Email: " + user.getEmail());
         System.out.println(user.toString());
 
-        User user1 = new User("slykid", "slykid@naver.com", LocalDateTime.now(), LocalDateTime.now());
+        User user1 = new User(null,"slykid", "slykid@naver.com", LocalDateTime.now(), LocalDateTime.now());
         User user2 = new User("slykid", "slykid@naver.com");
 
         System.out.println(user1.toString());
