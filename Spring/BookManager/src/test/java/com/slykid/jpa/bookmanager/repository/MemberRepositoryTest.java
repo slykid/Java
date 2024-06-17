@@ -17,6 +17,7 @@ class MemberRepositoryTest {
         memberRepository.save(new Member());
 
         System.out.println(">>> " + memberRepository.findAll());
+//        memberRepository.findAll().forEach(System.out::println);
     }
 
 }
