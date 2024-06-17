@@ -2,5 +2,9 @@ spring:
   h2:
     console:
       enabled: true
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create-drop
 server:
   port: 8080

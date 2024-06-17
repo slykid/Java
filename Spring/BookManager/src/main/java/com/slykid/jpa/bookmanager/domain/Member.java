@@ -2,6 +2,7 @@ package com.slykid.jpa.bookmanager.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
@@ -15,7 +16,7 @@ import java.time.LocalDateTime;
 @Entity  // 데이터베이스의 테이블과 연결하는 객체, 식별을 위한 ID가 필요함
 public class Member {
     @Id                    // 해당 변수를 @Entity 의 ID 값으로 사용
-    @GeneratedValue        // 자동으로 ID 생성을 위한 설정
+    @GeneratedValue(strategy= GenerationType.IDENTITY)        // 자동으로 ID 생성을 위한 설정
     private Long id;
 
     @NonNull
