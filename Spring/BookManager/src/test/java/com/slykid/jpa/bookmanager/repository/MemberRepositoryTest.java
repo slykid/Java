@@ -16,7 +16,7 @@ class MemberRepositoryTest {
     {
         memberRepository.save(new Member());
 
-        System.out.println(memberRepository.findAll());
+        System.out.println(">>> " + memberRepository.findAll());
     }
 
 }
