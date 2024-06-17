@@ -1,24 +1,22 @@
 package com.slykid.jpa.bookmanager.repository;
 
-import com.slykid.jpa.bookmanager.domain.User;
+import com.slykid.jpa.bookmanager.domain.Member;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
-class UserRepositoryTest {
+class MemberRepositoryTest {
 
     @Autowired
-    private UserRepository userRepository;
+    private MemberRepository memberRepository;
 
     @Test
     void crud()
     {
-        userRepository.save(new User());
+        memberRepository.save(new Member());
 
-        System.out.println(userRepository.findAll());
+        System.out.println(memberRepository.findAll());
     }
 
 }
