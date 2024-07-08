@@ -3,12 +3,10 @@ spring:
     console:
       enabled: true
   jpa:
-    hibernate:
-      ddl-auto: create
     show-sql: true
     properties:
       hibernate:
         format_sql: true
-    defer-datasource-initialization: true
+    defer-datasource-initialization: true  # 초기화 시 필요!
 server:
   port: 8080
