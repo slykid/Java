@@ -129,9 +129,6 @@ class UsersRepositoryTest {
         // 16. save() 메소드를 사용한 Update 쿼리 구현하기
         // - SimpleJpaRepository 클래스를 사용
         // - 해당 인터페이스에서 구현체를 제공하고 있음
-        // - save() 상황별 동작 원리
-        //   - "select-insert" 인 경우:
-        //   - "update" 인 경우:
         userRepository.save(new Users("david", "david@gmail.com"));
 
         Users user = userRepository.findById(203L).orElseThrow(RuntimeException::new);
