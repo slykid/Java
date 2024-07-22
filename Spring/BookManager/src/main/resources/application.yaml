@@ -6,7 +6,14 @@ spring:
     show-sql: true
     properties:
       hibernate:
-        format_sql: true
+        format_sql: true  # SQL 포맷팅
+        highlight_sql: true  # ANSI 코드에 색 추가
+        use_sql_comments: true  # SQL 내부에 /* */ 주석 추가
     defer-datasource-initialization: true  # 초기화 시 필요!
 server:
   port: 8080
+
+logging:
+  level:
+    org.hibernate.SQL: debug  # logger에 출력할 시
+    org.hibernate.type.descriptor.sql: trace  # 파라미터 값 출력
