@@ -141,4 +141,37 @@ class UsersRepositoryTest {
 
     }
 
+    @Test
+    void select()
+    {
+        // System.out.println(userRepository.findByName("slykid"));  // Optional 타입변경 후 주석처리
+        // 실행결과: 에러 발생 (Query did not return a unique result / 2건의 객체가 조회됨) -> List 형식으로 수정해 결과를 출력
+
+        // System.out.println(userRepository.findByName("dennis")); // Optional 타입, Set 타입 변경 후 실행
+
+        // System.out.println(userRepository.findByEmail("slykid@naver.com"));
+
+        System.out.println("findByEmail: " + userRepository.findByEmail("slykid@naver.com"));
+        System.out.println("getByEmail: " + userRepository.getByEmail("slykid@naver.com"));
+        System.out.println("readByEmail: " + userRepository.readByEmail("slykid@naver.com"));
+        System.out.println("queryByEmail: " + userRepository.queryByEmail("slykid@naver.com"));
+        System.out.println("searchByEmail: " + userRepository.searchByEmail("slykid@naver.com"));
+        System.out.println("streamByEmail: " + userRepository.streamByEmail("slykid@naver.com"));
+        System.out.println("findUserByEmail: " + userRepository.findUserByEmail("slykid@naver.com"));
+
+        // 해당 클래스 문자열이 구현체에서 무시됨을 확인 가능 / 그래도 가급적이면 네이밍은 맞춰주자!!!
+        System.out.println("findSomethingByEmail: " + userRepository.findSomethingByEmail("slykid@naver.com"));
+
+        // fetch ~ first ? rows only 사용 쿼리가 생성됨
+        System.out.println("findTop1ByName: " + userRepository.findTop1ByName("slykid"));
+        System.out.println("findFirst1ByName: " + userRepository.findFirst1ByName("slykid"));
+
+        System.out.println("findTop2ByName: " + userRepository.findTop2ByName("slykid"));
+        System.out.println("findFirst2ByName: " + userRepository.findFirst2ByName("slykid"));
+
+        System.out.println("findLast1ByName: " + userRepository.findLast1ByName("slykid"));
+        // -> 예상과 달리 위의 findTop2ByName 과 동일한 결과가 출력됨 / "Last"는 인식되는 키워드가 아니기 때문에 무시됨
+
+    }
+
 }
