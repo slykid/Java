@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -172,6 +173,22 @@ class UsersRepositoryTest {
         System.out.println("findLast1ByName: " + userRepository.findLast1ByName("slykid"));
         // -> 예상과 달리 위의 findTop2ByName 과 동일한 결과가 출력됨 / "Last"는 인식되는 키워드가 아니기 때문에 무시됨
 
+
+        // And, Or 조건의 QueryMethod 구현
+        System.out.println("findByEmailAndName: " + userRepository.findByEmailAndName("slykid@naver.com", "slykid"));
+        System.out.println("findByEmailOrName: " + userRepository.findByEmailOrName("slykid@naver.com", "slykid"));
+
+        // After, Before 키워드 (시간에 대한 조건)
+        System.out.println("findByCreatedAtAfter: " + userRepository.findByCreatedAtAfter(LocalDateTime.now().minusDays(1L)));
+        System.out.println("findByIdAfter: " + userRepository.findByIdAfter(4L));
+
+        // GreaterThan, GreaterThanEqual, LessThan, LessThanEqual (수치 비교 조건)
+        System.out.println("findByCreatedAtGreaterThan: " + userRepository.findByCreatedAtGreaterThan(LocalDateTime.now().minusDays(1L)));
+        System.out.println("findByCreatedAtGreaterThanEqual: " + userRepository.findByCreatedAtGreaterThanEqual(LocalDateTime.now().minusDays(1L)));
+
+        System.out.println("findByCreatedAtBetween: " + userRepository.findByCreatedAtBetween(LocalDateTime.now().minusDays(1L), LocalDateTime.now()));
+        System.out.println("findByIdBetween: " + userRepository.findByIdBetween(1L, 3L));
+        System.out.println("findByIdGreaterThanEqualAndIdLessThanEqual:" + userRepository.findByIdGreaterThanEqualAndIdLessThanEqual(1L, 3L));
     }
 
 }

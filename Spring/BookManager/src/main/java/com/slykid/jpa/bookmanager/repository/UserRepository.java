@@ -3,6 +3,7 @@ package com.slykid.jpa.bookmanager.repository;
 import com.slykid.jpa.bookmanager.domain.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -38,4 +39,20 @@ public interface UserRepository extends JpaRepository<Users, Long> {
     List<Users> findTop2ByName(String name);
 
     List<Users> findLast1ByName(String name);
+
+    // And, Or 조건의 QueryMethod 구현
+    List<Users> findByEmailAndName(String email, String name);
+    List<Users> findByEmailOrName(String email, String name);
+
+    // After, Before 키워드 (시간에 대한 조건)
+    List<Users> findByCreatedAtAfter(LocalDateTime yesterday);
+    List<Users> findByIdAfter(Long id);
+
+    // GreaterThan, GreaterThanEqual, LessThan, LessThanEqual (수치 비교 조건)
+    List<Users> findByCreatedAtGreaterThan(LocalDateTime yesterday);
+    List<Users> findByCreatedAtGreaterThanEqual(LocalDateTime yesterday);
+
+    List<Users> findByCreatedAtBetween(LocalDateTime yesterday, LocalDateTime today);
+    List<Users> findByIdBetween(Long id1, Long id2);
+    List<Users> findByIdGreaterThanEqualAndIdLessThanEqual(Long id1, Long id2);
 }
