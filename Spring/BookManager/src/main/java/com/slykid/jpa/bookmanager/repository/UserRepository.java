@@ -55,4 +55,10 @@ public interface UserRepository extends JpaRepository<Users, Long> {
     List<Users> findByCreatedAtBetween(LocalDateTime yesterday, LocalDateTime today);
     List<Users> findByIdBetween(Long id1, Long id2);
     List<Users> findByIdGreaterThanEqualAndIdLessThanEqual(Long id1, Long id2);
+
+    // 빈 값에 대한 조회
+    List<Users> findByIdIsNotNull();
+
+    List<Users> findByAddressIsNotEmpty();
+    List<Users> findByNameIn(List<String> names);
 }

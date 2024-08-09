@@ -1,12 +1,10 @@
 package com.slykid.jpa.bookmanager.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -28,5 +26,10 @@ public class Users {
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
+
+    // address 엔티티 클래스 생성 후 아래 코드 활성화
+    @OneToMany(fetch=FetchType.EAGER)
+    private List<Address> address;
+
 
 }

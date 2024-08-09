@@ -189,6 +189,22 @@ class UsersRepositoryTest {
         System.out.println("findByCreatedAtBetween: " + userRepository.findByCreatedAtBetween(LocalDateTime.now().minusDays(1L), LocalDateTime.now()));
         System.out.println("findByIdBetween: " + userRepository.findByIdBetween(1L, 3L));
         System.out.println("findByIdGreaterThanEqualAndIdLessThanEqual:" + userRepository.findByIdGreaterThanEqualAndIdLessThanEqual(1L, 3L));
+
+        // 빈 값에 대한 조회
+        System.out.println("findByIdIsNotNull: " + userRepository.findByIdIsNotNull());
+
+        // 아래 코드는 에러를 발생함: IsEmpty / IsNotEmpty can only be used on collection properties
+        // isEmpty / isNotEmpty 는 컬렉션 타입에서만 사용가능함
+        // + String 에서는 빈 문자열을 "Empty" 로 표시하며, 공백 및 NULL 모두 해당되기 때문에 사용에 유의하자.
+//        System.out.println("findByIdIsNotEmpty: " + userRepository.findByIdIsNotEmpty());
+        System.out.println("findByAddressIsNotEmpty: " + userRepository.findByAddressIsNotEmpty());
+
+        // 값의 포함여부 확인
+        System.out.println("findByNameIn: " + userRepository.findByNameIn(Lists.newArrayList("martin", "deniss")));
+
+
+
+
     }
 
 }
