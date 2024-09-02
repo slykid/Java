@@ -211,4 +211,28 @@ class UsersRepositoryTest {
         System.out.println("findByNameLike: " + userRepository.findByNameLike("%lyk%"));
     }
 
+    @Test
+    void pagingAndSortingTest()
+    {
+        System.out.println("findTop1ByNameOrderByIdDesc: " + userRepository.findTop1ByNameOrderByIdDesc("slykid"));
+        // System.out.println("findTopByNameOrderByIdDesc: " + userRepository.findTopByNameOrderByIdDesc("slykid"));
+        // 위의 결과와 동일 -> N 값이 별도로 명시되지 않으면 기본적으로 1로 설정됨
+
+        System.out.println("findFirstByNameOrderByIdDescEmailAsc: " + userRepository.findFirstByNameOrderByIdDescEmailAsc("slykid"));
+
+        // 주의: data.domain.sort 내의 함수를 사용함!
+        System.out.println("findFirstByName: " + userRepository.findFirstByName("slykid", Sort.by(Sort.Order.desc("id"))));
+        System.out.println("findFirstByName: " + userRepository.findFirstByName("slykid", Sort.by(Sort.Order.desc("id"), Sort.Order.asc("email"))));
+
+        // Paging 을 이용한 다수의 값 조회하기
+        System.out.println("findByNameWithPaging: " + userRepository.findByName("slykid", PageRequest.of(0, 1, Sort.by(Sort.Order.desc("id")))));
+
+        // 값을 조회하려는 경우 getContent() 메소드를 사용하여 조회
+        System.out.println("findByNameWithPaging: " + userRepository.findByName("slykid", PageRequest.of(0, 1, Sort.by(Sort.Order.desc("id")))).getContent());
+        System.out.println("findByNameWithPaging: " + userRepository.findByName("slykid", PageRequest.of(1, 1, Sort.by(Sort.Order.desc("id")))).getContent());
+
+        // 페이지 수를 알고 싶은 경우에는 getTotalElements() 메소드를 사용해 페이지 수를 확인할 수 있음
+        System.out.println("findByNameWithPaging: " + userRepository.findByName("slykid", PageRequest.of(0, 1, Sort.by(Sort.Order.desc("id")))).getTotalElements());
+    }
+
 }
