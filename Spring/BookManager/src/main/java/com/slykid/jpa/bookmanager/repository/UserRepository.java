@@ -58,7 +58,21 @@ public interface UserRepository extends JpaRepository<Users, Long> {
 
     // 빈 값에 대한 조회
     List<Users> findByIdIsNotNull();
-
     List<Users> findByAddressIsNotEmpty();
+
+    // 값의 포함여부 확인
     List<Users> findByNameIn(List<String> names);
+
+    // 특정 값의 포함여부 확인
+    List<Users> findByNameStartingWith(String name);
+    List<Users> findByNameEndingWith(String name);
+    List<Users> findByNameContains(String name);
+
+    List<Users> findByNameLike(String name);
+
+    // Is 키워드
+    Set<Users> findByNameIs(String name);
+    Set<Users> findUserByName(String name);
+    Set<Users> findUserByNameEquals(String name);
+
 }
