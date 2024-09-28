@@ -5,9 +5,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
@@ -61,7 +63,7 @@ public interface UserRepository extends JpaRepository<Users, Long> {
 
     // 빈 값에 대한 조회
     List<Users> findByIdIsNotNull();
-    List<Users> findByAddressIsNotEmpty();
+//    List<Users> findByAddressIsNotEmpty();
 
     // 값의 포함여부 확인
     List<Users> findByNameIn(List<String> names);
@@ -86,4 +88,11 @@ public interface UserRepository extends JpaRepository<Users, Long> {
     List<Users> findFirstByName(String name, Sort sort);
 
     Page<Users> findByName(String name, Pageable pageable);
+
+
+    // Native 쿼리: enumTest에서 활용
+    @Query(value="select * from users limit 1", nativeQuery=true)
+    Map<String, Object> findRawRecord();
+
+
 }

@@ -1,5 +1,6 @@
 package com.slykid.jpa.bookmanager.repository;
 
+import com.slykid.jpa.bookmanager.domain.Gender;
 import com.slykid.jpa.bookmanager.domain.Users;
 import jakarta.transaction.Transactional;
 import org.assertj.core.util.Lists;
@@ -197,7 +198,7 @@ class UsersRepositoryTest {
         // isEmpty / isNotEmpty 는 컬렉션 타입에서만 사용가능함
         // + String 에서는 빈 문자열을 "Empty" 로 표시하며, 공백 및 NULL 모두 해당되기 때문에 사용에 유의하자.
         // System.out.println("findByIdIsNotEmpty: " + userRepository.findByIdIsNotEmpty());
-        System.out.println("findByAddressIsNotEmpty: " + userRepository.findByAddressIsNotEmpty());
+        // System.out.println("findByAddressIsNotEmpty: " + userRepository.findByAddressIsNotEmpty());
 
         // 값의 포함여부 확인
         System.out.println("findByNameIn: " + userRepository.findByNameIn(Lists.newArrayList("martin", "deniss")));
@@ -233,6 +234,30 @@ class UsersRepositoryTest {
 
         // 페이지 수를 알고 싶은 경우에는 getTotalElements() 메소드를 사용해 페이지 수를 확인할 수 있음
         System.out.println("findByNameWithPaging: " + userRepository.findByName("slykid", PageRequest.of(0, 1, Sort.by(Sort.Order.desc("id")))).getTotalElements());
+    }
+
+    @Test
+    void insertAndUpdateTest() {
+        Users user = new Users();
+        user.setName("saint-martin");
+        user.setEmail("saintmartin@naver.com");
+
+        userRepository.save(user);
+
+        Users user2 = userRepository.findById(1L).orElseThrow(RuntimeException::new);
+        user2.setName("SLYK1D");
+        userRepository.save(user2);
+    }
+
+    @Test
+    void enumTest(){
+        Users user = userRepository.findById(1L).orElseThrow(RuntimeException::new);
+        user.setGender(Gender.MALE);
+
+        userRepository.save(user);
+
+        userRepository.findAll().forEach(System.out::println);
+        System.out.println(userRepository.findRawRecord().get("gender"));  // 변경전: 값이 0이 출력됨, 변경후: MALE 로 출력됨
     }
 
 }
