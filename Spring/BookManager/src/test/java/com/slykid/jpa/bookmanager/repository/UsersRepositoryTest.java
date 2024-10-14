@@ -250,7 +250,7 @@ class UsersRepositoryTest {
     }
 
     @Test
-    void enumTest(){
+    void enumTest() {
         Users user = userRepository.findById(1L).orElseThrow(RuntimeException::new);
         user.setGender(Gender.MALE);
 
@@ -258,6 +258,52 @@ class UsersRepositoryTest {
 
         userRepository.findAll().forEach(System.out::println);
         System.out.println(userRepository.findRawRecord().get("gender"));  // 변경전: 값이 0이 출력됨, 변경후: MALE 로 출력됨
+    }
+
+    @Test
+    void listenerTest() {
+        Users user = new Users();
+        user.setEmail("slykid@gmail.com");
+        user.setName("slyk1d");
+
+        userRepository.save(user);
+
+        Users user2 = userRepository.findById(1L).orElseThrow(RuntimeException::new);
+        user2.setName("slyk1111d");
+
+        userRepository.save(user2);
+
+        userRepository.deleteById(4L);
+    }
+
+    @Test
+    void prePersistTest() {
+        Users user = new Users();
+        user.setEmail("slykid2@naver.com");
+        user.setName("slykid2");
+
+        // 아래 2개 메소드는 setter 메소드지만, DRY 법칙 (Don't Repeat Yourself)에 위배되기도 하고, 휴먼에러가 발생가능성이 있음
+        //user.setCreatedAt(LocalDateTime.now());  // → @PrePersist 로 값 설정
+        //user.setUpdatedAt(LocalDateTime.now());  // → @PrePersist 로 값 설정
+
+        userRepository.save(user);
+
+        System.out.println(userRepository.findByEmail("slykid2@naver.com"));
+    }
+
+    @Test
+    void preUpdateTest() {
+        Users user = userRepository.findById(1L).orElseThrow(RuntimeException::new);
+
+        System.out.println("AS-IS: " + user);
+
+        user.setName("slykid2");
+        userRepository.save(user);
+
+        System.out.println("TO-BE: " + userRepository.findAll().get(0));
+
+        // AS-IS: Users(id=1, name=slykid, email=slykid@naver.com, gender=null, createdAt=2024-10-14T21:29:38.280972, updatedAt=2024-10-14T21:29:38.280972, testData=null)
+        // TO-BE: Users(id=1, name=slykid2, email=slykid@naver.com, gender=null, createdAt=2024-10-14T21:29:38.280972, updatedAt=2024-10-14T21:29:38.625186, testData=null)
     }
 
 }

@@ -12,12 +12,13 @@ import java.util.List;
 @Data // @Getter + @Setter + @ToString + @EqualsAndHashCode + @RequiredArgsConstructor
 @Builder // Builder 형식으로 객체 생성 + 필드값 주입을 수행함
 @Entity  // 데이터베이스의 테이블과 연결하는 객체, 식별을 위한 ID가 필요함
-@Table(name="users", indexes={ @Index(columnList = "name")}, uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
+//@Table(name="users", indexes={ @Index(columnList = "name")}, uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
 // @Table 어노테이션
 // - 테이블의 이름, 카탈로그, 스키마 등을 지정할 수 있는 어노테이션
 // - 일반적으로는 엔티티의 이름에 맞는 테이블명을 자동으로 지정하나, 이름, 스키마, 카탈로그를 지정해서 사용하는 경우도 있음 (ex. 기존 레거시DB를 사용하는 경우)
 // - 추가적으로 제약조건과 인덱스를 위의 예시와 같이 추가할 수도 있으나, 일반적으로는 제약사항과 인덱스의 설정은 DB에서 설정하는 경우가 많다.
-public class Users {
+@EntityListeners(value = MyEntityListener.class)
+public class Users implements Auditable {
     @Id                  // 해당 변수를 @Entity 의 ID 값으로 사용
     @GeneratedValue      // 자동으로 ID 생성을 위한 설정
     private Long id;
@@ -65,4 +66,51 @@ public class Users {
     // @OneToMany(fetch=FetchType.EAGER)
     //private List<Address> address;
 
+    // Entity Listener (로그 찍는 용도이며, listenerTest 실행이외는 주석 처리)
+//    @PrePersist
+//    public void prePersist() {
+//        System.out.println(">>> PrePersist");
+//    }
+//
+//    @PostPersist
+//    public void postPersist() {
+//        System.out.println(">>> PostPersist");
+//    }
+//
+//    @PreUpdate
+//    public void preUpdate() {
+//        System.out.println(">>> PreUpdate");
+//    }
+//
+//    @PostUpdate
+//    public void postUpdate() {
+//        System.out.println(">>> PostUpdate");
+//    }
+//
+//    @PreRemove
+//    public void preRemove() {
+//        System.out.println(">>> PreRemove");
+//    }
+//
+//    @PostRemove
+//    public void postRemove() {
+//        System.out.println(">>> PostRemove");
+//    }
+//
+//    @PostLoad
+//    public void postLoad() {
+//        System.out.println(">>> PostLoad");
+//    }
+
+// EntityListener 클래스 생성에 따른 주석처리
+//    @PrePersist
+//    public void prePersist() {
+//        this.createdAt = LocalDateTime.now();
+//        this.updatedAt = LocalDateTime.now();
+//    }
+//
+//    @PreUpdate
+//    public void preUpdate() {
+//        this.updatedAt = LocalDateTime.now();
+//    }
 }
