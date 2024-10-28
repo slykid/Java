@@ -21,6 +21,9 @@ class UsersRepositoryTest {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserHistoryRepository userHistoryRepository;
+
     @Test
     @Transactional
     void crud()
@@ -304,6 +307,21 @@ class UsersRepositoryTest {
 
         // AS-IS: Users(id=1, name=slykid, email=slykid@naver.com, gender=null, createdAt=2024-10-14T21:29:38.280972, updatedAt=2024-10-14T21:29:38.280972, testData=null)
         // TO-BE: Users(id=1, name=slykid2, email=slykid@naver.com, gender=null, createdAt=2024-10-14T21:29:38.280972, updatedAt=2024-10-14T21:29:38.625186, testData=null)
+    }
+
+    @Test
+    void userHistoryTest() {
+        Users user = new Users();
+        user.setEmail("slykid-new@naver.com");
+        user.setName("slykid-new");
+
+        userRepository.save(user);
+
+        user.setName("slykid-new-new");
+
+        userRepository.save(user);
+
+        userHistoryRepository.findAll().forEach(System.out::println);
     }
 
 }

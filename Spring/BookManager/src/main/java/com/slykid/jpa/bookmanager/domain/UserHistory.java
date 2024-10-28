@@ -1,7 +1,10 @@
 package com.slykid.jpa.bookmanager.domain;
 
 import com.slykid.jpa.bookmanager.domain.listener.Auditable;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -18,31 +21,22 @@ import java.time.LocalDateTime;
 @ToString(callSuper=true)  // BaseEntity 상속오류 현상해결을 위한 추가
 @EqualsAndHashCode(callSuper=true)  // BaseEntity 상속오류 현상해결을 위한 추가
 //@EntityListeners(value = AuditingEntityListener.class)  // BaseEntity 사용에 따른 주석처리
-public class Book extends BaseEntity implements Auditable {
+public class UserHistory extends BaseEntity implements Auditable {
     @Id
     @GeneratedValue
     private Long id;
 
+    private Long userId;
+
     private String name;
 
-    private String author;
+    private String email;
 
-//    BaseEntiry 사용에 따른 주석처리
+//    BaseEntity 사용에 따른 주석처리
 //    @CreatedDate
-//    private LocalDateTime createdAt;
+//    private LocalDateTime createdAt;  // MyEntityListener 에서 Auditable 을 설정해주었기 때문에  implement Auditable 을 해주어야함
 //
 //    @LastModifiedDate
-//    private LocalDateTime updatedAt;
+//    private LocalDateTime updatedAt;  // MyEntityListener 에서 Auditable 을 설정해주었기 때문에  implement Auditable 을 해주어야함
 
-// EntityListener 클래스 생성에 따른 주석 처리
-//    @PrePersist
-//    public void prePersist() {
-//        this.createdAt = LocalDateTime.now();
-//        this.updatedAt = LocalDateTime.now();
-//    }
-//
-//    @PreUpdate
-//    public void preUpdate() {
-//        this.updatedAt = LocalDateTime.now();
-//    }
 }

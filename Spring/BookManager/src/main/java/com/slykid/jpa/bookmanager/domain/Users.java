@@ -1,10 +1,14 @@
 package com.slykid.jpa.bookmanager.domain;
 
+import com.slykid.jpa.bookmanager.domain.listener.Auditable;
+import com.slykid.jpa.bookmanager.domain.listener.UserEntityListener;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,8 +21,11 @@ import java.util.List;
 // - 테이블의 이름, 카탈로그, 스키마 등을 지정할 수 있는 어노테이션
 // - 일반적으로는 엔티티의 이름에 맞는 테이블명을 자동으로 지정하나, 이름, 스키마, 카탈로그를 지정해서 사용하는 경우도 있음 (ex. 기존 레거시DB를 사용하는 경우)
 // - 추가적으로 제약조건과 인덱스를 위의 예시와 같이 추가할 수도 있으나, 일반적으로는 제약사항과 인덱스의 설정은 DB에서 설정하는 경우가 많다.
-@EntityListeners(value = MyEntityListener.class)
-public class Users implements Auditable {
+//@EntityListeners(value = {AuditingEntityListener.class, UserEntityListener.class})  // BaseEntity 사용에 따른 주석처리
+@EntityListeners(value = { UserEntityListener.class })
+@ToString(callSuper=true)  // BaseEntity 상속오류 현상해결을 위한 추가
+@EqualsAndHashCode(callSuper=true)  // BaseEntity 상속오류 현상해결을 위한 추가
+public class Users extends BaseEntity implements Auditable {
     @Id                  // 해당 변수를 @Entity 의 ID 값으로 사용
     @GeneratedValue      // 자동으로 ID 생성을 위한 설정
     private Long id;
@@ -50,9 +57,13 @@ public class Users implements Auditable {
     - unique contraints를 컬럼 1개에만 설정하려는 경우에 unique 필드에 True로 설정하여 추가할 수 있다.
     - 만약 아래 변수가 insert 혹은 update 시에 반영되지 않기를 원한다면, insertable, updatable 필드 값을 False로 설정하면 된다.
     */
-    private LocalDateTime createdAt;
-
-    private LocalDateTime updatedAt;
+// BaseEntity.java 생성에 따른 주석
+//    @Column(updatable = false)
+//    @CreatedDate
+//    private LocalDateTime createdAt;
+//
+//    @LastModifiedDate
+//    private LocalDateTime updatedAt;
 
     @Transient
     /*

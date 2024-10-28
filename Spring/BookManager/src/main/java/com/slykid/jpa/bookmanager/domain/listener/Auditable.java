@@ -1,4 +1,4 @@
-package com.slykid.jpa.bookmanager.domain;
+package com.slykid.jpa.bookmanager.domain.listener;
 
 import java.time.LocalDateTime;
 

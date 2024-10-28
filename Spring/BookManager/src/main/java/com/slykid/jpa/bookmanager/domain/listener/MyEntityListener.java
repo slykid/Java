@@ -1,4 +1,4 @@
-package com.slykid.jpa.bookmanager.domain;
+package com.slykid.jpa.bookmanager.domain.listener;
 
 
 import jakarta.persistence.PrePersist;
