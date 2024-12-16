@@ -197,12 +197,6 @@ class UsersRepositoryTest {
         // 빈 값에 대한 조회
         System.out.println("findByIdIsNotNull: " + userRepository.findByIdIsNotNull());
 
-        // 아래 코드는 에러를 발생함: IsEmpty / IsNotEmpty can only be used on collection properties
-        // isEmpty / isNotEmpty 는 컬렉션 타입에서만 사용가능함
-        // + String 에서는 빈 문자열을 "Empty" 로 표시하며, 공백 및 NULL 모두 해당되기 때문에 사용에 유의하자.
-        // System.out.println("findByIdIsNotEmpty: " + userRepository.findByIdIsNotEmpty());
-        // System.out.println("findByAddressIsNotEmpty: " + userRepository.findByAddressIsNotEmpty());
-
         // 값의 포함여부 확인
         System.out.println("findByNameIn: " + userRepository.findByNameIn(Lists.newArrayList("martin", "deniss")));
 
@@ -284,10 +278,6 @@ class UsersRepositoryTest {
         Users user = new Users();
         user.setEmail("slykid2@naver.com");
         user.setName("slykid2");
-
-        // 아래 2개 메소드는 setter 메소드지만, DRY 법칙 (Don't Repeat Yourself)에 위배되기도 하고, 휴먼에러가 발생가능성이 있음
-        //user.setCreatedAt(LocalDateTime.now());  // → @PrePersist 로 값 설정
-        //user.setUpdatedAt(LocalDateTime.now());  // → @PrePersist 로 값 설정
 
         userRepository.save(user);
 
