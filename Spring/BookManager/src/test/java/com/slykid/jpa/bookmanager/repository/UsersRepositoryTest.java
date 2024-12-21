@@ -1,6 +1,7 @@
 package com.slykid.jpa.bookmanager.repository;
 
 import com.slykid.jpa.bookmanager.domain.Gender;
+import com.slykid.jpa.bookmanager.domain.UserHistory;
 import com.slykid.jpa.bookmanager.domain.Users;
 import jakarta.transaction.Transactional;
 import org.assertj.core.util.Lists;
@@ -312,6 +313,33 @@ class UsersRepositoryTest {
         userRepository.save(user);
 
         userHistoryRepository.findAll().forEach(System.out::println);
+    }
+
+    @Test
+    void userRelationTest() {
+        Users user = new Users();
+        user.setName("david");
+        user.setEmail("david@fastcampus.com");
+        user.setGender(Gender.MALE);
+
+        userRepository.save(user);
+
+        user.setName("daniel");
+        userRepository.save(user);
+
+        user.setEmail("daniel@fastcampus.com");
+        userRepository.save(user);
+
+        userHistoryRepository.findAll().forEach(System.out::println);
+
+//        List<UserHistory> result = userHistoryRepository.findByUserId(
+//                userRepository.findByEmail("daniel@fastcampus.com").getId()
+//        );
+//        result.forEach(System.out::println);
+
+        List<UserHistory> result2 = userRepository.findByEmail("deniel@fastcampus.com").getUserHistories();
+        result2.forEach(System.out::println);
+
     }
 
 }

@@ -4,11 +4,13 @@ import com.slykid.jpa.bookmanager.domain.listener.UserEntityListener;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Data
-@Builder
 @Entity
 @EntityListeners(value = { UserEntityListener.class })
 @ToString(callSuper=true)
@@ -27,7 +29,7 @@ public class Users extends BaseEntity {
     @Enumerated(value=EnumType.STRING) // (변경 후)
     private Gender gender;
 
-    @Transient
-    private String testData;
+    @OneToMany
+    private List<UserHistory> userHistories = new ArrayList<>();
 
 }
