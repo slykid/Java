@@ -1,4 +1,4 @@
-package com.java_design.kilhyun;
+package com.java_design.kilhyun.prototype;
 
 public class PrototypeTest
 {
