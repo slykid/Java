@@ -1,10 +1,3 @@
-package com.example.hellospring.repository;
-
-import com.example.hellospring.domain.Member;
-
-import java.util.List;
-import java.util.Optional;
-
 /**
  * packageName  : com.example.hellospring.repository
  * fileName     : MemberRepository
@@ -16,6 +9,14 @@ import java.util.Optional;
  * ---------------------------------------------------
  * 25. 1. 2.          kilhyunkim         최초작성
  */
+
+package com.example.hellospring.repository;
+
+import com.example.hellospring.domain.Member;
+
+import java.util.List;
+import java.util.Optional;
+
 public interface MemberRepository {
 
     Member save(Member member);
