@@ -8,8 +8,7 @@
  * DATE                 AUTHOR              NOTE
  * ---------------------------------------------------
  * 24. 12. 29.          kilhyunkim         최초작성
- *
-*/
+ */
 package com.example.hellospring.controller;
 
 import org.springframework.stereotype.Controller;
