@@ -20,8 +20,8 @@ public class MemoryMemberRepository implements MemberRepository {
     private static long sequence = 0L;
 
     @Override
-    public Member save(Member member) {
-
+    public Member save(Member member)
+    {
         member.setId(++sequence);
         store.put(member.getId(), member);
 
@@ -29,25 +29,30 @@ public class MemoryMemberRepository implements MemberRepository {
     }
 
     @Override
-    public Optional<Member> findById(Long id) {
-
+    public Optional<Member> findById(Long id)
+    {
         return Optional.ofNullable(store.get(id));  // NULL 인 경우에, 별도 처리하여 반환
-
     }
 
     @Override
-    public Optional<Member> findByName(String name) {
-
+    public Optional<Member> findByName(String name)
+    {
        return store.values().stream()
                 .filter(member -> member.getName().equals(name))
                 .findAny();
-
     }
 
     @Override
-    public List<Member> findAll() {
-
+    public List<Member> findAll()
+    {
         return new ArrayList<>(store.values());
-
     }
+
+    public void clearStore()
+    {
+        // Test는 생성한 순서대로 실행되지 않음
+        // 다른 테스트에서 이미 생성된 객체를 repository에서 제거하기 위함
+        store.clear();
+    }
+
 }
