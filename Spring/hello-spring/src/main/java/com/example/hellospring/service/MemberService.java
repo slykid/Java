@@ -15,6 +15,7 @@ import com.example.hellospring.domain.Member;
 import com.example.hellospring.repository.MemberRepository;
 import com.example.hellospring.repository.MemoryMemberRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -23,18 +24,35 @@ public class MemberService {
     private final MemberRepository memberRepository = new MemoryMemberRepository();
 
     /**
-     * 회원 가입
-     * - 같은 이름의 중복 회원은 제
+     * 회원가입
      */
     public Long join(Member member) {
-        Optional<Member> result = memberRepository.findByName(member.getName());
-        result.ifPresent(m -> {
-            throw new IllegalStateException("이미 존재하는 회원입니다.");
-        });
+        validateDuplicatedMembers(member);
 
         memberRepository.save(member);
 
         return member.getId();
+    }
+
+    private void validateDuplicatedMembers(Member member) {
+        // 같은 이름의 중복 회원은 제외
+        memberRepository
+            .findByName(member.getName())
+            .ifPresent(m -> {
+                throw new IllegalStateException("이미 존재하는 회원입니다.");
+        });
+    }
+
+    /**
+     * 전체 회원 조회
+     *
+     */
+    public List<Member> findMembers() {
+        return memberRepository.findAll();
+    }
+
+    public Optional<Member> findOne(Long memberId) {
+        return memberRepository.findById(memberId);
     }
 
 }
