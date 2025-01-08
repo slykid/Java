@@ -9,13 +9,11 @@
  * ---------------------------------------------------
  * 25. 1. 6.          kilhyunkim         최초작성
  */
-package com.example.hellospring.controller;
+package com.example.hellospring.repository;
 
 
 import com.example.hellospring.domain.Member;
-import com.example.hellospring.repository.MemoryMemberRepository;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

@@ -18,7 +18,6 @@ import com.example.hellospring.repository.MemoryMemberRepository;
 import java.util.List;
 import java.util.Optional;
 
-
 public class MemberService {
 
     private final MemberRepository memberRepository = new MemoryMemberRepository();
