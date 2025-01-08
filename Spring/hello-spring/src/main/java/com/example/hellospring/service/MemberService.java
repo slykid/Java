@@ -37,15 +37,14 @@ public class MemberService {
     private void validateDuplicatedMembers(Member member) {
         // 같은 이름의 중복 회원은 제외
         memberRepository
-            .findByName(member.getName())
-            .ifPresent(m -> {
-                throw new IllegalStateException("이미 존재하는 회원입니다.");
-        });
+                .findByName(member.getName())
+                .ifPresent(m -> {
+                    throw new IllegalStateException("이미 존재하는 회원입니다.");
+                });
     }
 
     /**
      * 전체 회원 조회
-     *
      */
     public List<Member> findMembers() {
         return memberRepository.findAll();
