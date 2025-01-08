@@ -8,8 +8,7 @@
  * DATE                 AUTHOR              NOTE
  * ---------------------------------------------------
  * 25. 1. 6.          kilhyunkim         최초작성
- *
-*/
+ */
 package com.example.hellospring.controller;
 
 
@@ -28,14 +27,12 @@ public class MemoryMemberRepositoryTest {
     private MemoryMemberRepository repository = new MemoryMemberRepository();
 
     @AfterEach
-    public void afterEach()
-    {// MemoryMemberRepository.clearStore 생성에 따른 테스트 후 repository 초기화 메소드
+    public void afterEach() {// MemoryMemberRepository.clearStore 생성에 따른 테스트 후 repository 초기화 메소드
         repository.clearStore();
     }
 
     @Test
-    public void save()
-    {
+    public void save() {
         Member member = new Member();
         member.setName("Spring");
         repository.save(member);
@@ -47,8 +44,7 @@ public class MemoryMemberRepositoryTest {
     }
 
     @Test
-    public void findByName()
-    {
+    public void findByName() {
         Member member1 = new Member();
         member1.setName("Spring1");
         repository.save(member1);
@@ -63,8 +59,7 @@ public class MemoryMemberRepositoryTest {
     }
 
     @Test
-    public void findAll()
-    {
+    public void findAll() {
         Member member1 = new Member();
         member1.setName("Spring1");
         repository.save(member1);
