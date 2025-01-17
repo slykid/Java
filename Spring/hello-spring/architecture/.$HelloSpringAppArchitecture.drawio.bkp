@@ -52,6 +52,9 @@
         <mxCell id="HjPG7o08bH9SylwkRu-I-4" value="Memory&lt;div&gt;MemberRepository&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="280" y="740" width="120" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="HjPG7o08bH9SylwkRu-I-6" value="Interface" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="310" y="570" width="60" height="30" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
