@@ -57,6 +57,7 @@ public class JdbcMemberRepository implements MemberRepository {
             close(conn, pstmt, rs);
         }
     }
+
     @Override
     public Optional<Member> findById(Long id) {
         String sql = "select * from member where id = ?";
@@ -73,7 +74,7 @@ public class JdbcMemberRepository implements MemberRepository {
 
             rs = pstmt.executeQuery();
 
-            if(rs.next()) {
+            if (rs.next()) {
                 Member member = new Member();
 
                 member.setId(rs.getLong("id"));
@@ -90,6 +91,7 @@ public class JdbcMemberRepository implements MemberRepository {
             close(conn, pstmt, rs);
         }
     }
+
     @Override
     public List<Member> findAll() {
         String sql = "select * from member";
@@ -106,7 +108,7 @@ public class JdbcMemberRepository implements MemberRepository {
             rs = pstmt.executeQuery();
 
             List<Member> members = new ArrayList<>();
-            while(rs.next()) {
+            while (rs.next()) {
                 Member member = new Member();
                 member.setId(rs.getLong("id"));
                 member.setName(rs.getString("name"));
@@ -121,6 +123,7 @@ public class JdbcMemberRepository implements MemberRepository {
             close(conn, pstmt, rs);
         }
     }
+
     @Override
     public Optional<Member> findByName(String name) {
         String sql = "select * from member where name = ?";
@@ -132,7 +135,7 @@ public class JdbcMemberRepository implements MemberRepository {
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, name);
             rs = pstmt.executeQuery();
-            if(rs.next()) {
+            if (rs.next()) {
                 Member member = new Member();
                 member.setId(rs.getLong("id"));
                 member.setName(rs.getString("name"));
