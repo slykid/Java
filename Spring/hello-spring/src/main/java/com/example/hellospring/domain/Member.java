@@ -11,8 +11,14 @@
  */
 package com.example.hellospring.domain;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Member {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name="name") // 변수명이 DB 컬럼명과 동일한 경우는 제외가능
     private String name;
 
     public Long getId() {
