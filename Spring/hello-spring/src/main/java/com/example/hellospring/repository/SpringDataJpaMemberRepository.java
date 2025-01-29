@@ -18,6 +18,8 @@ import java.util.Optional;
 
 public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Long>, MemberRepository {
 
+    // 스프링 데이터 JPA는 기본적으로 CRUD를 제공함
+    // JPQL: select m from Member m where m.name = ?
     @Override
     Optional<Member> findByName(String name);
 }
