@@ -28,6 +28,6 @@ public class MemberServiceTest {
         Member findMember = memberService.findMember(1L);
 
         // then
-        Assertions.assertEquals(member,findMember);
+        Assertions.assertEquals(member, findMember);
     }
 }

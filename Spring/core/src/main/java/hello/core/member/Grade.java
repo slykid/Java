@@ -8,8 +8,7 @@
  * DATE                 AUTHOR              NOTE
  * ---------------------------------------------------
  * 25. 2. 12.          kilhyunkim         최초작성
- *
-*/
+ */
 package hello.core.member;
 
 public enum Grade {
