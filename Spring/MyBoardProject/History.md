@@ -1,7 +1,9 @@
 # 사이드 프로젝트: 게시판 만들기
+
 ## 1. 프로젝트 구성
 
 ### 1.1 환경설정
+
 * JDK Ver.: Java 17
 * 빌드 툴: gradle
 * 세부정보 (build.gradle)
@@ -26,15 +28,17 @@
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
   }
   ```
-  
+
 ### 1.2 웹 페이지
-  * 홈 (home)
-  * 로그인 (login)
-  * 회원가입 (signup)
-  * 게시판 (list)
-  * 게시글 작성 (writePostForm)
+
+* 홈 (home)
+* 로그인 (login)
+* 회원가입 (signup)
+* 게시판 (list)
+* 게시글 작성 (writePostForm)
 
 ## 2. 프로젝트 변경 이력
+
 * 2025.02.04: 최초 작성
-  * 페이지 템플릿 추가
-  * HomeController, BoardController 생성
+    * 페이지 템플릿 추가
+    * HomeController, BoardController 생성
