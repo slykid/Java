@@ -11,6 +11,7 @@
  */
 package com.example.myboardproject.controller;
 
+import com.example.myboardproject.Service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +32,7 @@ public class BoardController {
     // 게시판 조회
     @GetMapping("/board/list")
     public String listBoard(Model model) {
-        List<Post> posts = postService.findPosts();
+        List<Post> posts = postService.findPostsAll();
         model.addAttribute("posts", posts);
 
         return "board/list";
@@ -46,8 +47,6 @@ public class BoardController {
 
     @PostMapping("/board/writePost")
     public String savePost() {
-
-
         return "redirect:/board/list";
     }
 
@@ -60,7 +59,6 @@ public class BoardController {
 
     @PostMapping("/login")
     public String login() {
-
         return "redirect:/";
     }
 
