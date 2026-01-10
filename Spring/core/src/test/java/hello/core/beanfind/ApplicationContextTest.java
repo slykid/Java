@@ -24,11 +24,9 @@ public class ApplicationContextTest {
 
     @Test
     @DisplayName("모든 빈 출력하기")
-    void findAllBean()
-    {
+    void findAllBean() {
         String[] beanDefinitionNames = ac.getBeanDefinitionNames();
-        for(String beanName : beanDefinitionNames)
-        {
+        for (String beanName : beanDefinitionNames) {
             Object bean = ac.getBean(beanName);
             System.out.println("name = " + beanName + " object = " + bean);
         }
@@ -36,17 +34,14 @@ public class ApplicationContextTest {
 
     @Test
     @DisplayName("애플리케이션 빈 출력하기")
-    void findAppBean()
-    {
+    void findAppBean() {
         String[] beanDefinitionNames = ac.getBeanDefinitionNames();
-        for(String beanName : beanDefinitionNames)
-        {
+        for (String beanName : beanDefinitionNames) {
             BeanDefinition beanDefinition = ac.getBeanDefinition(beanName);
 
             // ROLE_APPLICATION: 직접 등록한 Application Bean
             // ROLE_INFRASTRUCTURE: 스프링 내부에서 사용하는 Bean
-            if(beanDefinition.getRole() == BeanDefinition.ROLE_APPLICATION)
-            {
+            if (beanDefinition.getRole() == BeanDefinition.ROLE_APPLICATION) {
                 Object bean = ac.getBean(beanName);
                 System.out.println("name = " + beanName + " object = " + bean);
             }

@@ -17,8 +17,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class MemberApp {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         // Spring Container & Bean 으로 불러오기
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
         MemberService memberService = applicationContext.getBean("memberService", MemberService.class);

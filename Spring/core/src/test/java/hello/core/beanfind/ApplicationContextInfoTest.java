@@ -28,32 +28,28 @@ public class ApplicationContextInfoTest {
 
     @Test
     @DisplayName("빈 이름으로 조회")
-    void findBeanByName()
-    {
+    void findBeanByName() {
         MemberService memberService = ac.getBean("memberService", MemberService.class);
         assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
     }
 
     @Test
     @DisplayName("타입으로만 조회")
-    void findBeanByType()
-    {
+    void findBeanByType() {
         MemberService memberService = ac.getBean(MemberService.class);
         assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
     }
 
     @Test
     @DisplayName("구현체 타입으로 조회")
-    void findBeanByImplName()
-    {   // Spring Bean에 등록된 인스턴스 타입으로 조회 > 구현체를 적는 것은 좋지 않음 >> 역할과 구현을 구분하고, 역할에 의존하는 것이 좋기 때문
+    void findBeanByImplName() {   // Spring Bean에 등록된 인스턴스 타입으로 조회 > 구현체를 적는 것은 좋지 않음 >> 역할과 구현을 구분하고, 역할에 의존하는 것이 좋기 때문
         MemberServiceImpl memberService = ac.getBean("memberService", MemberServiceImpl.class);
         assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
     }
 
     @Test
     @DisplayName("빈 이름 조회 실패")
-    void failFindBeanByName()
-    {
+    void failFindBeanByName() {
         assertThrows(NoSuchBeanDefinitionException.class, () -> ac.getBean("xxxx", MemberService.class));
     }
 }
